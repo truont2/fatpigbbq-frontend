@@ -1,4 +1,4 @@
-import { Routes, Route } from "react-router-dom";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './App.css';
 
 import Navigation from "./routes/navigation/navigation.component";
@@ -8,6 +8,8 @@ function App() {
   return (
      // allows applciation to register the route level components that will render certain eleelmtnsat certain paths
     // anything that is going to be routable needs to be inside routes
+    <BrowserRouter>
+
     <Routes>
       {/* by having the home route render navigation, itll keep the navbar on all pages and persistent */}
       <Route path="/" element={<Navigation />}>
@@ -19,6 +21,7 @@ function App() {
         <Route path="checkout" element={<Checkout />} /> */}
       </Route>
     </Routes>
+    </BrowserRouter>
   );
 }
 
