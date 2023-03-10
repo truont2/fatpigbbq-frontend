@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Flowbite } from "flowbite-react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
-import '../Login/login.styles.scss'
+import '../login/login.styles.scss'
 
 // graphql information
 import { useMutation } from "@apollo/client";

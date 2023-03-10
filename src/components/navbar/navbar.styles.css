@@ -17,3 +17,29 @@
     background-size: 100% 3px;
     background-position: 0 100%
 }
+
+.text-white{
+    font-family: 'Bebas Neue';
+    font-size: 30px;
+    font-weight:400;
+    letter-spacing: 0.1em; 
+    color: rgb(31, 41, 55);
+}
+
+.nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    transition: .3s ease-in;
+    overflow: hidden;
+}
+
+.nav-bg {
+    background-color: rgba(129,52,0,0.7);
+}
+
+.nav-bg > .text-white {
+    color: beige;
+}
