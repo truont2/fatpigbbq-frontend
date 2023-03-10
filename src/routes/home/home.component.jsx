@@ -1,4 +1,5 @@
 import React from "react";
+import Map from "../../components/map/map.component";
 
 export default function Home() {
   return (
@@ -11,6 +12,7 @@ export default function Home() {
       >
         Learn React
       </a>
+      <Map />
     </div>
   );
 }
