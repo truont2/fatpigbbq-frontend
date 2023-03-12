@@ -18,13 +18,13 @@
     background-position: 0 100%
 }
 
-.text-white{
+/* .text-white{
     font-family: 'Bebas Neue';
     font-size: 30px;
     font-weight:400;
     letter-spacing: 0.1em; 
     color: rgb(31, 41, 55);
-}
+} */
 
 .nav {
     position: fixed;
