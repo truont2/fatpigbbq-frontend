@@ -6,7 +6,7 @@ import "./navbar.styles.css";
 function Navbar() {
   const [color, setColor] = useState(false);
   const changeColor = () => {
-    if (window.scrollY >= 50) {
+    if (window.scrollY >= 10) {
       setColor(true);
     } else {
       setColor(false);
