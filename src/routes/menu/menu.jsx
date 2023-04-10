@@ -1,30 +1,26 @@
-
 import React from "react";
 // import styles from "../../styles/Navbar.module.css";
 // https://levelup.gitconnected.com/displaying-pdf-in-react-app-6e9d1fffa1a9
-import image from '../../assets/meals/full-rack-ribs.jpg'
-import meal from '../../assets/meal.jpeg'
+import image from "../../assets/meals/full-rack-ribs.jpg";
+import wallpaper from "../../assets/meal.jpeg";
 function Menu() {
-    const menuItem=[];
+  const menuItem = [];
   return (
     <section className="text-gray-600 body-font font-Roboto">
       <div className="relative w-screen bg-black overflow-hidden">
-      <img
-          className="w-screen md:h-80 h-50 object-cover object-center opacity-70"
-          src={meal}
-          alt='nothing'
-        />
+        <div
+          className="bg-fixed bg-repeat-no bg-cover bg-left-bottom w-screen md:h-[300px] h-50 object-cover object-center opacity-70"
+          style={{ backgroundImage: `url(${wallpaper})` }}
+        ></div>
+
         <div className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h1 className="md:text-7xl text-4xl font-medium title-font text-center font-CooperBlack">Menu</h1>
+          <h1 className="md:text-7xl text-4xl font-medium title-font text-center font-CooperBlack">
+            Menu
+          </h1>
           <div className="mx-auto text-center" href="/">
-            <a
-              href="/"
-              target="_blank"
-              className={`md:text-lg text-base`}
-            >
+            <a href="/" target="_blank" className={`md:text-lg text-base`}>
               View a PDF Menu
             </a>
-            
           </div>
         </div>
       </div>
@@ -39,7 +35,10 @@ function Menu() {
               return (
                 <>
                   {item.type == "meal" ? (
-                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full" key={item.title}>
+                    <div
+                      className="lg:w-1/4 md:w-1/2 p-4 w-full"
+                      key={item.title}
+                    >
                       <a className="block relative h-48 rounded overflow-hidden">
                         <img
                           alt={item.title}
@@ -73,7 +72,10 @@ function Menu() {
               return (
                 <>
                   {item.type == "sides" ? (
-                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full" key={item.title}>
+                    <div
+                      className="lg:w-1/4 md:w-1/2 p-4 w-full"
+                      key={item.title}
+                    >
                       <a className="block relative h-48 rounded overflow-hidden">
                         <img
                           alt="ecommerce"
@@ -107,7 +109,10 @@ function Menu() {
               return (
                 <>
                   {item.type == "beverages" ? (
-                    <div className="lg:w-1/4 md:w-1/2 p-4 w-full " key={item.title}>
+                    <div
+                      className="lg:w-1/4 md:w-1/2 p-4 w-full "
+                      key={item.title}
+                    >
                       <div className="mt-4">
                         <a className="block relative h-48 rounded overflow-hidden">
                           <img

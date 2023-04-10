@@ -5,7 +5,7 @@ const Hero = () => {
   return (
     <div className="w-full h-[90vh]">
       <img
-        className="top-0 left-0 w-full h-[90vh] object-cover"
+        className="top-0 left-0 w-full h-[90vh] object-cover bg-no-repeat bg-auto bg-fixed bg-center" 
         src={image}
         alt="hero"
       />

@@ -1,10 +1,13 @@
-import styles from "./navbar.styles.css";
+import "./navbar.styles.css";
 import logo from "../../assets/fatpiglogo.png";
 import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import "./navbar.styles.css";
+
 function Navbar() {
   const [color, setColor] = useState(false);
+  const [open, setOpen] = useState(false);
+  
   const changeColor = () => {
     if (window.scrollY >= 10) {
       setColor(true);
@@ -15,10 +18,10 @@ function Navbar() {
 
   window.addEventListener("scroll", changeColor);
 
-  const [open, setOpen] = React.useState(false);
-  const [flyer, setFlyer] = React.useState(false);
-  const [flyerTwo, setFlyerTwo] = React.useState(false);
+  
 
+  // const [flyer, setFlyer] = useState(false);
+  // const [flyerTwo, setFlyerTwo] = useState(false);
   return (
     <>
       <Disclosure as="nav" className={`py-2 ${color ? "nav nav-bg" : "nav"}`}>
@@ -47,7 +50,7 @@ function Navbar() {
                   <div className="-mr-2 -my-2 md:hidden">
                     <button
                       type="button"
-                      className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                      className="z-50 bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                       onClick={() => setOpen(!open)}
                     >
                       <span className="sr-only">Open menu</span>
@@ -72,19 +75,27 @@ function Navbar() {
                   <nav className="hidden md:flex space-x-10">
                     <a
                       href="/"
-                      className={` ${styles.linkunderline} text-lg font-medium text-white`}
+                      className={`linkunderline text-lg font-medium text-white`}
                     >
                       Home
                     </a>
                     <a
                       href="/about-page"
-                      className={` ${styles.linkunderline} text-lg font-medium text-white`}
+                      className={`linkunderline text-lg font-medium text-white`}
                     >
                       About
                     </a>
+                    <button
+                          type="button"
+                          className="bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
+                          onClick={() => {
+                            console.log(!open);
+                            setOpen(!open);
+                          }}
+                        ></button>
                     <a
                       href="/menu"
-                      className={` ${styles.linkunderline} text-lg font-medium text-white`}
+                      className={`linkunderline text-lg font-medium text-white`}
                     >
                       Menu
                     </a>
@@ -113,8 +124,8 @@ function Navbar() {
               <div
                 className={
                   open
-                    ? "opacity-100 scale-100 transition ease-out duration-200 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50"
-                    : "opacity-0 scale-95 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-0"
+                    ? "opacity-100 scale-100 ease-out duration-200 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-50"
+                    : "opacity-0 scale-95 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden"
                 }
               >
                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
@@ -252,6 +263,7 @@ function Navbar() {
                             Contact
                           </span>
                         </a>
+                        
                       </nav>
                     </div>
                   </div>

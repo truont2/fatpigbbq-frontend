@@ -32,19 +32,19 @@ export default function Carousel({
   });
 
   return (
-    <div className="max-w-screen h-[850px] w-full m-auto relative group top-0 left-0">
+    <div className="max-w-screen h-[300px] md:h-[500px] w-full m-auto relative group top-0 left-0">
       <div
         style={{ backgroundImage: `url(${slides[currentIndex].url})` }}
-        className="w-full h-full bg-center bg-cover duration-500 ease-in-out"
+        className="w-full h-full bg-center bg-contain duration-500 ease-in-out bg-no-repeat"
       ></div>
 
       {/* left arrow */}
-      <div className="hidden group-hover:block text-white absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20  cursor-pointer">
+      <div className=" text-white absolute top-[50%] translate-x-0 translate-y-[-50%] left-5 text-2xl rounded-full p-2 bg-black/20  cursor-pointer">
         <BsChevronCompactLeft onClick={prevSlide} size={30} />
       </div>
 
       {/* right arrow */}
-      <div className="hidden group-hover:block text-white absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20  cursor-pointer">
+      <div className=" text-white absolute top-[50%] translate-x-0 translate-y-[-50%] right-5 text-2xl rounded-full p-2 bg-black/20  cursor-pointer">
         <BsChevronCompactRight onClick={nextSlide} size={30} />
       </div>
 
