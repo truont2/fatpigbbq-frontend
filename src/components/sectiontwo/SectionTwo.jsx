@@ -2,7 +2,7 @@ import React from "react";
 
 const SectionTwo = ({images}) => {
   return (
-    <div className="max-w-[1400px] h-[500px] bg-[rgba(129,52,0)] mx-auto py-20 pt-16 lg:mb-[20%] md:mb-[35%] px-4 grid lg:grid-cols-3 gap-4">
+    <div className="max-w-[1400px] h-[450px] bg-[#813400d9] mx-auto py-20 pt-16 lg:mb-[20%] md:mb-[35%] px-4 grid lg:grid-cols-3 gap-4">
       <div  className="lg:top-20 relative lg:col-span-1 col-span-2">
         <h3 className="text-2xl font-bold">Fine Interior Rooms </h3>
         <p className="pt-4">lorem</p>
