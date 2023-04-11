@@ -10,6 +10,7 @@ import SectionTwo from '../../components/sectiontwo/SectionTwo'
 import Carousel from "../../components/carousel/Carousel";
 import Hero from "../../components/hero-component/Hero";
 import Section1 from "../../components/section1/Section1";
+import Location from "../../components/location/location.component";
 
 // https://www.youtube.com/watch?v=tXlZCW26bto
 // website tutorial 
@@ -39,7 +40,8 @@ export default function Home() {
       {/* <Carousel autoSlide={false} slides={slides}></Carousel> */}
       <Hero />
       <Section1 />
-      <SectionTwo />
+      <SectionTwo /> 
+      <Location />
       <a
         className="App-link"
         href="https://reactjs.org"

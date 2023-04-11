@@ -45,10 +45,10 @@ function About() {
         </div>
       </div>
       {/* content */}
-      <div className="max-w-[1400px] m-auto pt-16 px-4 flex justify-center flex-col items-center">
+      <div className="max-w-[1400px] m-auto pt-6 px-4 flex justify-center flex-col items-center">
         <div className=" text-center lg:col-span-2 col-span-2 my-10">
           <h3 className="text-5xl font-bold">The Story of Fat Pig </h3>
-          <p className="pt-16 text-2xl">
+          <p className="pt-10 text-2xl">
             Fat Pig BBQ was established in 2018 by Bao Truong. Bao has always
             enjoyed cooking barbeque for his family & friends at his home. Bao
             later realized that he wanted share his passion to provide great
