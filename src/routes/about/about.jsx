@@ -69,7 +69,7 @@ function About() {
       {/* images */}
       <div className=" m-auto max-w-[1400px] py-16 px-4 grid grid-cols-2 lg:grid-cols-5 gap-2">
         {slides.map((image, key) => {
-          return <img src={image.url} alt={key} />;
+          return <img src={image.url} alt={key} className="rounded-md"/>;
         })}
       </div>
     </div>
