@@ -34,12 +34,12 @@ function Menu() {
             {menuItem.map((item) => {
               return (
                 <>
-                  {item.type == "meal" ? (
+                  {item.type === "meal" ? (
                     <div
                       className="lg:w-1/4 md:w-1/2 p-4 w-full"
                       key={item.title}
                     >
-                      <a className="block relative h-48 rounded overflow-hidden">
+                      <a href='/' className="block relative h-48 rounded overflow-hidden">
                         <img
                           alt={item.title}
                           className="object-cover object-center w-full h-full block"
@@ -71,12 +71,12 @@ function Menu() {
             {menuItem.map((item) => {
               return (
                 <>
-                  {item.type == "sides" ? (
+                  {item.type === "sides" ? (
                     <div
                       className="lg:w-1/4 md:w-1/2 p-4 w-full"
                       key={item.title}
                     >
-                      <a className="block relative h-48 rounded overflow-hidden">
+                      <a href='/' className="block relative h-48 rounded overflow-hidden">
                         <img
                           alt="ecommerce"
                           className="object-cover object-center w-full h-full block"
@@ -108,13 +108,13 @@ function Menu() {
             {menuItem.map((item) => {
               return (
                 <>
-                  {item.type == "beverages" ? (
+                  {item.type === "beverages" ? (
                     <div
                       className="lg:w-1/4 md:w-1/2 p-4 w-full "
                       key={item.title}
                     >
                       <div className="mt-4">
-                        <a className="block relative h-48 rounded overflow-hidden">
+                        <a href='/' className="block relative h-48 rounded overflow-hidden">
                           <img
                             alt="ecommerce"
                             className="object-cover md:object-left object-center w-full h-full block"

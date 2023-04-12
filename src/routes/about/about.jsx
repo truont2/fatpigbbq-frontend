@@ -6,7 +6,7 @@ import image3 from "../../assets/DSC_7018.jpg";
 import image4 from "../../assets/DSC_7022.jpg";
 import image5 from "../../assets/DSC_7032.jpg";
 import reggie from "../../assets/o.jpg";
-import data from '../../assets/t.jpg'
+// import data from '../../assets/t.jpg'
 
 function About() {
   const slides = [
@@ -45,10 +45,10 @@ function About() {
         </div>
       </div>
       {/* content */}
-      <div className="max-w-[1400px] m-auto pt-6 px-4 flex justify-center flex-col items-center">
+      <div className="max-w-[1400px] m-auto pt-6 px-4 flex justify-center flex-col items-center text-gray-500">
         <div className=" text-center lg:col-span-2 col-span-2 my-10">
           <h3 className="text-5xl font-bold">The Story of Fat Pig </h3>
-          <p className="pt-10 text-2xl">
+          <p className="pt-10 text-2xl ">
             Fat Pig BBQ was established in 2018 by Bao Truong. Bao has always
             enjoyed cooking barbeque for his family & friends at his home. Bao
             later realized that he wanted share his passion to provide great

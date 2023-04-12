@@ -1,6 +1,5 @@
 import React from "react";
 import "./location.styles.css";
-import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 // https://developers.google.com/maps/documentation/embed/get-started
 
