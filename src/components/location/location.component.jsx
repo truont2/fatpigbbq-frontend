@@ -23,7 +23,6 @@ export default function Location({ data }) {
             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS}&q=fat+pig+bbq, Edmonds+WA`}
           ></iframe>
         </div>
-        {`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS}&q=fat+pig+bbq, Edmonds+WA`}
         <div className="flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 font-Roboto lg:col-span-1 col-span-2">
           <h1 className="text-[#212427] text-3xl mb-1 font-large title-font">
             Information
