@@ -42,6 +42,9 @@ export default function Home() {
       <Section1 />
       <SectionTwo /> 
       <Location />
+      {/* ordering options */}
+      <div>reviews</div>
+      <div>ordering options</div>
       <a
         className="App-link"
         href="https://reactjs.org"

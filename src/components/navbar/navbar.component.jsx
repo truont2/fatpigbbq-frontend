@@ -91,6 +91,18 @@ function Navbar() {
                     >
                       Menu
                     </a>
+                    <a
+                      href="/press"
+                      className={`linkunderline text-lg font-medium text-white`}
+                    >
+                      Press
+                    </a>
+                    <a
+                      href="/shop"
+                      className={`linkunderline text-lg font-medium text-white`}
+                    >
+                      Shop
+                    </a>
                   </nav>
                   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                     <a
@@ -255,6 +267,30 @@ function Navbar() {
                           </svg>
                           <span className="ml-3 text-base font-medium text-[#212427]">
                             Contact
+                          </span>
+                        </a>
+                        <a
+                          href="/press"
+                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
+                        >
+                          {/* Heroicon name: outline/view-grid */}
+                          <svg
+                            className="flex-shrink-0 h-6 w-6 text-[rgba(129,52,0,255)]"
+                            xmlns="http://www.w3.org/2000/svg"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            aria-hidden="true"
+                          >
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              strokeWidth={2}
+                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                            />
+                          </svg>
+                          <span className="ml-3 text-base font-medium text-[#212427]">
+                            Press
                           </span>
                         </a>
                         

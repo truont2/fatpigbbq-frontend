@@ -1,34 +1,30 @@
 import React from "react";
+import "./location.styles.css";
 import { FaRegArrowAltCircleRight } from "react-icons/fa";
 
 // https://developers.google.com/maps/documentation/embed/get-started
 
 export default function Location({ data }) {
   return (
-    <section className="text-gray-600 body-font relative container px-5 pb-10 mx-auto">
-      {/* <div className=" text-center mb-0">
-        <h1 className="text-4xl font-medium title-font text-[#212427] mb-5 text-center font-CooperBlack">
-          Location and Hours
-        </h1>
-        <div className="flex mt-6 justify-center">
-          <div className="w-16 h-1 rounded-full bg-[#813400] inline-flex"></div>
-        </div>
-      </div> */}
-      <div className="max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-3 gap-3">
+
+      <div className="m-auto pb-16 px-4 grid lg:grid-cols-2 grid-cols-1 gap-3">
         {/* need to hide the api key  */}
         {/* https://www.freecodecamp.org/news/hide-api-keys-in-frontend-apps-using-netlify-functions/#:~:text=Create%20a%20serverless%20function&text=In%20this%20functions%20directory%2C%20create,images%20from%20the%20Pixabay%20API. */}
-        <iframe
+        {/* https://blog.hubspot.com/website/how-to-embed-google-map-in-html#:~:text=To%20make%20a%20responsive%20Google,with%20the%20class%20google%2Dmap. */}
+        <div className="google-map">
+          <iframe
           className="col-span-1 lg:col-span-2"
-          title="test"
-          width="900"
-          height="450"
-          style={{ border: "0" }}
-          loading="lazy"
-          allowFullScreen
-          referrerPolicy="no-referrer-when-downgrade"
-          src="https://www.google.com/maps/embed/v1/place?key=APIKEY
+            title="test"
+            width="900"
+            height="450"
+            style={{ border: "0" }}
+            loading="lazy"
+            allowFullScreen
+            referrerPolicy="no-referrer-when-downgrade"
+            src="https://www.google.com/maps/embed/v1/place?key=APIKEY
     &q=fat+pig+bbq, Edmonds+WA"
-        ></iframe>
+          ></iframe>
+        </div>
         <div className="flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 font-Roboto lg:col-span-1 col-span-2">
           <h1 className="text-[#212427] text-3xl mb-1 font-large title-font">
             Information
@@ -54,6 +50,5 @@ export default function Location({ data }) {
           </p>
         </div>
       </div>
-    </section>
   );
 }
