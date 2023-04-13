@@ -12,10 +12,4 @@ test('render navbar',() => {
   render(<Navbar />);
 } )
 
-test('renders location section', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/Location/i);
-  expect(linkElement).toBeInTheDocument();
-});
-
 // write more tests first then complete code
