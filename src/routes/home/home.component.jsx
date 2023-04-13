@@ -4,6 +4,7 @@ import SectionTwo from '../../components/sectiontwo/SectionTwo'
 import Hero from "../../components/hero-component/Hero";
 import Section1 from "../../components/section1/Section1";
 import Location from "../../components/location/location.component";
+import Reviews from '../../components/reviews/reviews.component';
 
 // https://www.youtube.com/watch?v=tXlZCW26bto
 // website tutorial 
@@ -17,9 +18,9 @@ export default function Home() {
       <Hero />
       <Section1 />
       <SectionTwo /> 
+      <Reviews />
       <Location />
       {/* ordering options */}
-      <div>reviews</div>
       <div>ordering options</div>
       <a
         className="App-link"

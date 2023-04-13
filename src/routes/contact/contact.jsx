@@ -1,14 +1,27 @@
 import React from "react";
+import wallpaper from "../../assets/meal.jpeg";
 
 export default function Contact() {
   return (
     <div>
     <section class="text-gray-600 body-font relative font-Roboto">
-      <div class="container px-5 py-24 mx-auto">
-        <div class="flex flex-col text-center w-full mb-12">
-          <h1 class="sm:text-3xl font-medium mb-4 text-[#212427] font-CooperBlack">
-            Contact Us!
+    <div className="relative w-screen bg-black overflow-hidden">
+        {/* background-repeat: no-repeat;
+  background-size: auto;
+  /* background-attachment: fixed; 
+  background-position: center; */}
+        <div
+          className="bg-fixed bg-repeat-no bg-cover bg-left-bottom w-screen md:h-[250px] h-50 object-cover object-center opacity-70"
+          style={{ backgroundImage: `url(${wallpaper})` }}
+        ></div>
+        <div className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
+          <h1 className="md:text-4xl text-4xl font-medium title-font text-center font-CooperBlack">
+            Contact Us
           </h1>
+        </div>
+      </div>
+      <div class="container px-5 py-16 mx-auto">
+        <div class="flex flex-col text-center w-full mb-12">
           <p class="lg:w-2/3 mx-auto leading-relaxed text-base">
             Please feel free to reach out to us for any questions!
           </p>
