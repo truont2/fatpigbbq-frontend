@@ -38,11 +38,11 @@ const Section1 = () => {
     </div>
     {/* Right Side */}
     <div className='flex flex-col h-full justify-center text-gray-500'>
-      <h3 className='text-4xl md:text-5xl font-bold'>Check out the amazing food we offer</h3>
+      <h3 className='text-4xl md:text-5xl'>Check out the amazing food we offer</h3>
       <p className='text-2xl py-4'>
         Located in Edmonds, WA. Come to enjoy the most tender ribs in the area!
       </p>
-      <p className='pb-4'>
+      <p className='pb-4 text-lg'>
         Here are some of our amazing meals and sides we offer
       </p>
       <div>

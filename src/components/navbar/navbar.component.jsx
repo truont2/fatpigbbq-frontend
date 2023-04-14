@@ -24,7 +24,7 @@ function Navbar() {
   // const [flyerTwo, setFlyerTwo] = useState(false);
   return (
     <>
-      <Disclosure as="nav" className={`py-2 ${color ? "nav nav-bg" : "nav"}`}>
+      <Disclosure as="nav" className={`py-2 ${color ? "nav nav-bg" : "nav"} z-50`}>
         {() => (
           <>
             {/* This example requires Tailwind CSS v2.0+ */}
