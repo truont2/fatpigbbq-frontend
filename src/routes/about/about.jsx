@@ -4,7 +4,7 @@ import image from "../../assets/DSC_7011.jpg";
 import image2 from "../../assets/DSC_7015.jpg";
 import image3 from "../../assets/DSC_7018.jpg";
 import image4 from "../../assets/DSC_7022.jpg";
-import image5 from "../../assets/DSC_7032.jpg";
+import image5 from "../../assets/meals/porkMeal.jpg";
 import reggie from "../../assets/o.jpg";
 // import data from '../../assets/t.jpg'
 
