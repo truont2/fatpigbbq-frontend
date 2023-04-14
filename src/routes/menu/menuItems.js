@@ -19,6 +19,7 @@ import chkQuarter from '../../assets/meals/chkquater.jpg'
 import potato from '../../assets/meals/potato.jpg'
 import coleslaw from '../../assets/meals/coleslaw.jpg'
 import porkMeal from '../../assets/meals/porkMeal.jpg'
+import rib from '../../assets/meals/rib.webp'
 
 export const mealItems = [
     {
@@ -101,7 +102,7 @@ export const mealItems = [
     {
       title: "PULLED PORK SANDWICH DOUBLE MEAT", 
       "type": "Meals", 
-      "description": "Our signature pulled pork served on sandwich buns and topped with some fresh coleslaw but with double the amount of meat", 
+      "description": "Served on sandwich buns and topped with some fresh coleslaw with double the amount of meat", 
       "price": 6.95, 
       image: largePPSandwich
     },
@@ -171,7 +172,7 @@ export const mealItems = [
       "type": "Meals", 
       "description": "One individual rib", 
       "price": 2.95, 
-      image: corn
+      image: rib
     },
     {
       title: "CORNBREAD", 
