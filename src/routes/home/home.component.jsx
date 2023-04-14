@@ -18,7 +18,7 @@ export default function Home() {
       <Hero />
       <Section1 />
       <SectionTwo /> 
-      <Reviews />
+      {/* <Reviews /> */}
       <Location />
       {/* ordering options */}
       <div>ordering options</div>
