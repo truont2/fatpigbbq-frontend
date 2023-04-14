@@ -1,5 +1,4 @@
 import React from 'react'
-import { useLocation } from "react-router-dom"
 import wallpaper from "../../assets/meal.jpeg";
 const InProgress = () => {
   return (
