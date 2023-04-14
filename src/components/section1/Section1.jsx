@@ -1,7 +1,7 @@
 import React from "react";
 import image from '../../assets/mh_dsc08075min.jpg'
 import image2 from '../../assets/fat-pig-bbq-is-amazeballs.jpg'
-import image3 from '../../assets/pulledPorkSandwhich.jpg'
+import image3 from '../../assets/meals/pulledPorkSandwhich.jpg'
 import image4 from '../../assets/meals/cornbread.jpg'
 import image5 from '../../assets/meals/full-rack-ribs.jpg'
 

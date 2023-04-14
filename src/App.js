@@ -6,6 +6,7 @@ import About from "./routes/about/about";
 import Contact from "./routes/contact/contact";
 import Home from "./routes/home/home.component";
 import Menu from "./routes/menu/menu";
+import InProgress from "./routes/inprogress/InProgress";
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
         <Route path="auth" element={<Authentication />} />
         <Route path="shop/*" element={<Shop />} />
         <Route path="checkout" element={<Checkout />} /> */}
+            <Route path="*" element={<InProgress />} />
           </Route>
         </Routes>
       </BrowserRouter>
