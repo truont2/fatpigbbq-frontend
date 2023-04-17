@@ -61,7 +61,7 @@ export default class PauseOnHover extends Component {
       },
     ];
     return (
-      <div className="max-w-[1400px] xl:mx-auto py-16 px-4">
+      <div className="max-w-[1400px] xl:mx-auto pb-16 px-4">
         <Slider {...settings}>
         {data.map((review, key) => {
           return (
