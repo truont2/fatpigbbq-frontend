@@ -3,6 +3,8 @@ import React from "react";
 // https://levelup.gitconnected.com/displaying-pdf-in-react-app-6e9d1fffa1a9
 import { mealItems, drinkItems, sideItems } from "./menuItems.js";
 import wallpaper from "../../assets/meal.jpeg";
+import menuPDF from '../../assets/menu.pdf';
+
 function Menu() {
   return (
     <section className="text-gray-600 body-font font-Roboto">
@@ -23,11 +25,12 @@ function Menu() {
         <div className="container px-5 py-10 mx-auto" key="meals">
           <div
             className="w-fit mx-auto text-center text-gray-500  transition east-in-out"
-            href="/"
+            href="../../"
           >
-            <a href="/" target="_blank" className={`md:text-xl transition ease-in-out hover:text-slate-950 font-medium`}>
+            <a href={menuPDF} target="_blank" className={`md:text-xl transition ease-in-out hover:text-slate-950 font-medium`} rel="noreferrer">
               View a PDF Menu
             </a>
+
             <div className="my-5 text-lg">
               <h3>
                 * We also cater to large and small parties. Please contact us for
