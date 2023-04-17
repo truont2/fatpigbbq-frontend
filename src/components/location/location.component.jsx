@@ -6,7 +6,7 @@ import "./location.styles.css";
 export default function Location({ data }) {
   return (
 
-      <div className="max-w-[1400px] m-auto pb-16 px-4 grid lg:grid-cols-2 grid-cols-1 gap-10">
+      <div className="max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 grid-cols-1 gap-10">
         {/* need to hide the api key  */}
         {/* https://www.freecodecamp.org/news/hide-api-keys-in-frontend-apps-using-netlify-functions/#:~:text=Create%20a%20serverless%20function&text=In%20this%20functions%20directory%2C%20create,images%20from%20the%20Pixabay%20API. */}
         {/* https://blog.hubspot.com/website/how-to-embed-google-map-in-html#:~:text=To%20make%20a%20responsive%20Google,with%20the%20class%20google%2Dmap. */}
