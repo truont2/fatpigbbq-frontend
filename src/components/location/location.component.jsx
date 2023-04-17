@@ -44,7 +44,7 @@ export default function Location({ data }) {
           <h6>Note:</h6>
           <p>
             Hours may be subject to change during the holidays. Please check our
-            facebok for any updated Information
+            facebook for any updated information. Thank you!
           </p>
         </div>
       </div>
