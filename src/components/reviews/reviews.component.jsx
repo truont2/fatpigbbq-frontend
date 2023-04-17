@@ -2,16 +2,35 @@
 import React, { Component } from "react";
 import Slider from "react-slick";
 
+// https://react-slick.neostack.com/docs/example/adaptive-height
+
 export default class PauseOnHover extends Component {
   render() {
     var settings = {
       dots: true,
       infinite: true,
-      slidesToShow: 1,
+      slidesToShow: 2,
       slidesToScroll: 1,
       autoplay: true,
       autoplaySpeed: 5000,
-      pauseOnHover: true
+      pauseOnHover: true, 
+      adaptiveHeight: true,
+      responsive: [
+        {
+          breakpoint: 768,
+          settings: {
+            arrows: false,
+            slidesToShow: 2,
+          },
+        },
+        {
+          breakpoint: 480,
+          settings: {
+            arrows: false,
+            slidesToShow: 1,
+          },
+        },
+      ],
     };
 
     const data = [
@@ -42,7 +61,7 @@ export default class PauseOnHover extends Component {
       },
     ];
     return (
-      <div className="max-w-[1400px] mx-auto pb-16 px-4">
+      <div className="max-w-[1400px] xl:mx-auto py-16 px-4">
         <Slider {...settings}>
         {data.map((review, key) => {
           return (
