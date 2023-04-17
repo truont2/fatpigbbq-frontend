@@ -96,21 +96,21 @@ export const mealItems = [
       title: "PULLED PORK SANDWICH", 
       "type": "Meals", 
       "description": "Our signature pulled pork served on sandwich buns and topped with some fresh coleslaw", 
-      "price": 5.95, 
+      "price": "5.95", 
       image: ppSandwich
     },
     {
       title: "PULLED PORK SANDWICH DOUBLE MEAT", 
       "type": "Meals", 
       "description": "Served on sandwich buns and topped with some fresh coleslaw with double the amount of meat", 
-      "price": 6.95, 
+      "price": "6.95", 
       image: largePPSandwich
     },
     {
       title: "KID'S MEAL", 
       "type": "Meals", 
       "description": "Perfect meal for kids consisting of either one rib or one chicken drumstick. Includes one roll, a fruit snack, a juice box, and half a corn", 
-      "price": 8.95, 
+      "price": "8.95", 
       image: kidsmeal
     },
   ];
@@ -121,28 +121,28 @@ export const mealItems = [
       title: "WHOLE CORN ON THE COB", 
       "type": "Meals", 
       "description": "STEAMED CORN ON THE TOPPED WITH BUTTER AND SALT", 
-      "price": 3.50, 
+      "price": "3.50", 
       image: corn
     },
     {
       title: "BAKED BEANS", 
       "type": "Meals", 
       "description": "12oz of baked beans", 
-      "price": 3.50, 
+      "price": "3.50", 
       image: beans
     },
     {
       title: "COLESLAW", 
       "type": "Meals", 
       "description": "12oz of coleslaw", 
-      "price": 3.50, 
+      "price": "3.50", 
       image: coleslaw
     },
     {
       title: "POTATO SALAD", 
       "type": "Meals", 
       "description": "12oz of potato salad", 
-      "price": 3.50, 
+      "price": "3.50", 
       image: potato
     },
 
@@ -150,21 +150,21 @@ export const mealItems = [
       title: "CHICKEN QUARTER", 
       "type": "Meals", 
       "description": "Chicken Thigh and Drumstick together", 
-      "price": 6.50, 
+      "price": "6.50", 
       image: chkQuarter
     },
     {
       title: "CHICKEN THIGH", 
       "type": "Meals", 
       "description": "Barbeque Chicken Thigh.", 
-      "price": 3.95, 
+      "price": "3.95", 
       image: thigh
     },
     {
       title: "CHICKEN DRUMSTICK", 
       "type": "Meals", 
       "description": "Barbeque Chicken Drumstick", 
-      "price": 2.95, 
+      "price": "2.95", 
       image: leg
     },
     {
@@ -178,7 +178,7 @@ export const mealItems = [
       title: "CORNBREAD", 
       "type": "Meals", 
       "description": "cornbread", 
-      "price": 3.50, 
+      "price": "3.50", 
       image: cornbread
     },
   ];
@@ -188,21 +188,21 @@ export const mealItems = [
       title: "SODA", 
       "type": "Meals", 
       "description": "test", 
-      "price": 1.50, 
+      "price": "1.50", 
       image: soda
     },
     {
       title: "BOTTLED WATER", 
       "type": "Meals", 
       "description": "test", 
-      "price": 1.00, 
+      "price": "1.00", 
       image: water
     },
     {
       title: "BEER", 
       "type": "Meals", 
       "description": "test", 
-      "price": 3.50, 
+      "price": "3.50", 
       image: beer
     },
   ];
