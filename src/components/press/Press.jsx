@@ -1,5 +1,5 @@
 import React from "react";
-import wallpaper from "../../assets/meal.jpeg";
+// import wallpaper from "../../assets/meal.jpeg";
 import visitEdmonds from "../../assets/visitEdmonds.png";
 import seattleTimes from "../../assets/seattle-times-logo-960x450.jpg";
 import edmondsBeacon from "../../assets/edmondsBeacon.png";
