@@ -7,6 +7,7 @@ import Contact from "./routes/contact/contact";
 import Home from "./routes/home/home.component";
 import Menu from "./routes/menu/menu";
 import InProgress from "./routes/inprogress/InProgress";
+import Press from "./routes/press/Press";
 
 function App() {
   return (

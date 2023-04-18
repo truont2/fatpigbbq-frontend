@@ -4,7 +4,7 @@ import logo from '../../assets/fatpiglogo.png'
 
 const Footer = () => {
   return (
-    <div className="footer pt-10 bg-black text-white">
+    <div className="footer pt-10 bg-[#070606] text-white">
       <footer className=" body-font font-Roboto">
         <div className="container px-5 mb-4 mx-auto flex md:items-center lg:items-start md:flex-row md:flex-nowrap flex-wrap flex-col">
           <div className="w-64 flex-shrink-0 md:mx-0 mx-auto text-center md:text-left">

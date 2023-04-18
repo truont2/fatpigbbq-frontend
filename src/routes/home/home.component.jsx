@@ -5,6 +5,7 @@ import Hero from "../../components/hero-component/Hero";
 import Section1 from "../../components/section1/Section1";
 import Location from "../../components/location/location.component";
 import Reviews from '../../components/reviews/reviews.component';
+import Press from "../../components/press/Press";
 
 // https://www.youtube.com/watch?v=tXlZCW26bto
 // website tutorial 
@@ -19,6 +20,7 @@ export default function Home() {
       <Section1 />
       <SectionTwo /> 
       <Reviews />
+      <Press />
       <Location />
       {/* ordering options */}
       {/* <div>ordering options</div> */}

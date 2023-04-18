@@ -1,9 +1,10 @@
 import React from 'react'
 import wallpaper from "../../assets/meal.jpeg";
-const InProgress = () => {
+
+const Press = () => {
   return (
     <div>
-      {" "}
+      <div>
       <div className="relative w-screen bg-black overflow-hidden">
         {/* background-repeat: no-repeat;
   background-size: auto;
@@ -15,12 +16,13 @@ const InProgress = () => {
         ></div>
         <div className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
           <h1 className="invisible md:visible md:text-4xl text-4xl font-medium title-font text-center">
-            Page under construction
+            Press
           </h1>
         </div>
       </div>
     </div>
+    </div>
   )
 }
 
-export default InProgress
+export default Press

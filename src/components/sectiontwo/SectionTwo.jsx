@@ -7,7 +7,7 @@ import delivery from '../../assets/food-delivery-companies.jpg'
 
 const SectionTwo = ({ images }) => {
   return (
-    <div className="max-w-[1400px] h-[400px] bg-rose-700 mx-auto my-16 pt-16 lg:mb-[15%] md:mb-[25%] px-6 grid lg:grid-cols-3 gap-4">
+    <div className="max-w-[1400px] h-[400px] bg-gradient-to-r from-rose-600 to-rose-700 mx-auto my-16 pt-16 lg:mb-[15%] md:mb-[25%] px-6 grid lg:grid-cols-3 gap-4">
       <div className="lg:top-20 relative lg:col-span-1 col-span-2 text-white">
         <h3 className="text-3xl font-bold">
           Order Online for pickup or for delivery{" "}
