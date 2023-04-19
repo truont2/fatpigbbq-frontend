@@ -7,7 +7,7 @@ import "./navbar.styles.css";
 function Navbar() {
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
-  
+
   const changeColor = () => {
     if (window.scrollY >= 10) {
       setColor(true);
@@ -18,13 +18,14 @@ function Navbar() {
 
   window.addEventListener("scroll", changeColor);
 
-  
-
   // const [flyer, setFlyer] = useState(false);
   // const [flyerTwo, setFlyerTwo] = useState(false);
   return (
     <>
-      <Disclosure as="nav" className={`py-2 ${color ? "nav nav-bg" : "nav"} z-50`}>
+      <Disclosure
+        as="nav"
+        className={`py-2 ${color ? "nav nav-bg" : "nav"} z-50`}
+      >
         {() => (
           <>
             {/* This example requires Tailwind CSS v2.0+ */}
@@ -91,7 +92,7 @@ function Navbar() {
                     >
                       Menu
                     </a>
-                    <a
+                    {/* <a
                       href="/press"
                       className={`linkunderline text-lg font-medium text-white`}
                     >
@@ -102,7 +103,7 @@ function Navbar() {
                       className={`linkunderline text-lg font-medium text-white`}
                     >
                       Shop
-                    </a>
+                    </a> */}
                   </nav>
                   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                     <a
@@ -129,7 +130,7 @@ function Navbar() {
                 className={
                   open
                     ? "opacity-100 scale-100 ease-out duration-200 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-auto"
-                    : "opacity-0 scale-95 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden z-0"
+                    : "opacity-0 scale-95 absolute top-0 inset-x-0 p-2 transition transform origin-top-right md:hidden -z-50 pointer-events-none"
                 }
               >
                 <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 bg-white divide-y-2 divide-gray-50">
@@ -142,7 +143,7 @@ function Navbar() {
                           alt="fat pig logo"
                         />
                         <span className="ml-3 mt-2 text-3xl font-CooperBlack text-black/30">
-                         Fat Pig BBQ
+                          Fat Pig BBQ
                         </span>
                       </div>
                       <div className="-mr-2">
@@ -269,31 +270,6 @@ function Navbar() {
                             Contact
                           </span>
                         </a>
-                        <a
-                          href="/press"
-                          className="-m-3 p-3 flex items-center rounded-md hover:bg-gray-50"
-                        >
-                          {/* Heroicon name: outline/view-grid */}
-                          <svg
-                            className="flex-shrink-0 h-6 w-6 text-[rgba(129,52,0,255)]"
-                            xmlns="http://www.w3.org/2000/svg"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                            aria-hidden="true"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
-                            />
-                          </svg>
-                          <span className="ml-3 text-base font-medium text-[#212427]">
-                            Press
-                          </span>
-                        </a>
-                        
                       </nav>
                     </div>
                   </div>

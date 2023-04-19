@@ -43,7 +43,7 @@ function Login() {
   }
 
   return (
-    <div class="loginContainer" style={{overflow: "hidden"}}>
+    <div className="loginContainer" style={{overflow: "hidden"}}>
 
     <div
       // style={{
