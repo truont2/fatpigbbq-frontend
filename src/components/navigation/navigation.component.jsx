@@ -5,9 +5,7 @@ import Footer from "../footer/footer.component";
 export default function Navigation() {
   return (
     <>
-      <div className="z-50">
-        <Navbar />
-      </div>
+      <Navbar />
       <Outlet />
       <Footer />
     </>

@@ -48,7 +48,7 @@ function About() {
       <div className="max-w-[1400px] m-auto pt-6 px-4 flex justify-center flex-col items-center text-gray-500">
         <div className=" text-center lg:col-span-2 col-span-2 my-10">
           <h3 className="text-5xl font-bold">The Story of Fat Pig </h3>
-          <p className="pt-10 text-2xl ">
+          <p data-testid="custom-element" className="pt-10 text-2xl">
             Fat Pig BBQ was established in 2018 by Bao Truong. Bao has always
             enjoyed cooking barbeque for his family & friends at his home. Bao
             later realized that he wanted share his passion to provide great
@@ -69,7 +69,7 @@ function About() {
       {/* images */}
       <div className=" m-auto max-w-[1400px] py-16 px-4 grid grid-cols-2 lg:grid-cols-5 gap-2">
         {slides.map((image, key) => {
-          return <img src={image.url} alt={key} className="rounded-md"/>;
+          return <img src={image.url} alt={key} className="rounded-md" key={key}/>;
         })}
       </div>
     </div>
