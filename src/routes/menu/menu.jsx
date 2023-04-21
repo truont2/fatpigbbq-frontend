@@ -3,8 +3,8 @@ import React from "react";
 // https://levelup.gitconnected.com/displaying-pdf-in-react-app-6e9d1fffa1a9
 import { mealItems, drinkItems, sideItems } from "./menuItems.js";
 import wallpaper from "../../assets/meal.jpeg";
-import menuPDF from '../../assets/menu.pdf';
-
+import menuPDF from "../../assets/menu.pdf";
+import "./menu.styles.css";
 function Menu() {
   return (
     <section className="text-gray-600 body-font font-Roboto">
@@ -22,19 +22,21 @@ function Menu() {
       </div>
 
       <div className="max-w-[1400px] m-auto pt-6 px-4 flex justify-center flex-col items-center text-gray-500">
-        <div className="container px-5 py-10 mx-auto" key="meals">
-          <div
-            className="w-fit mx-auto text-center text-gray-500  transition east-in-out"
-            href="../../"
-          >
-            <a href={menuPDF} target="_blank" className={`md:text-xl transition ease-in-out hover:text-slate-950 font-medium`} rel="noreferrer">
-              View a PDF Menu
+        <div className="container md:px-5 py-10 mx-auto" key="meals">
+          <div className="w-fit mx-auto text-center text-gray-500  transition east-in-out ">
+            <a
+              href={menuPDF}
+              target="_blank"
+              className={`new-link md:text-xl transition ease-in-out font-medium`}
+              rel="noreferrer"
+            >
+              View Menu PDF
             </a>
 
             <div className="my-5 text-lg">
               <h3>
-                * We also cater to large and small parties. Please contact us for
-                more information
+                * We also cater to large and small parties. Please contact us
+                for more information
               </h3>
               <h5>
                 Note: Prices are subject to change in response to market
@@ -51,7 +53,10 @@ function Menu() {
             {/* map through the data twice for two sections menu and sides */}
             {mealItems.map((item) => {
               return (
-                <div className="lg:w-1/4 md:w-1/2 p-4 w-full" key={item.title}>
+                <div
+                  className="lg:w-1/4 md:w-1/2 py-4 md:p-4 w-full"
+                  key={item.title}
+                >
                   <a
                     href="/"
                     className="block relative h-48 rounded overflow-hidden"
@@ -78,11 +83,14 @@ function Menu() {
           <h3 className="text-4xl font-medium title-font font-CooperBlack text-gray-500 mb-5 pt-5 text-center">
             Sides
           </h3>
-          <div className="flex flex-wrap m-4  justify-center">
+          <div className="flex flex-wrap md:m-4  justify-center">
             {/* map through the data twice for two sections menu and sides */}
             {sideItems.map((item) => {
               return (
-                <div className="lg:w-1/4 md:w-1/2 p-4 w-full" key={item.title}>
+                <div
+                  className="lg:w-1/4 md:w-1/2 py-4 md:p-4 w-full"
+                  key={item.title}
+                >
                   <a
                     href="/"
                     className="block relative h-48 rounded overflow-hidden"
@@ -109,11 +117,14 @@ function Menu() {
           <h3 className="text-4xl font-medium title-font font-CooperBlack text-gray-500 mb-5 pt-5 text-center">
             Beverages
           </h3>
-          <div className="flex flex-wrap m-4 justify-center">
+          <div className="flex flex-wrap md:m-4 justify-center">
             {/* map through the data twice for two sections menu and sides */}
             {drinkItems.map((item) => {
               return (
-                <div className="lg:w-1/4 md:w-1/2 p-4 w-full " key={item.title}>
+                <div
+                  className="lg:w-1/4 md:w-1/2 py-4 md:p-4 w-full"
+                  key={item.title}
+                >
                   <div className="mt-4">
                     <a
                       href="/"

@@ -43,7 +43,7 @@ function Navbar() {
                         src={logo}
                         alt="fat pig logo"
                       />
-                      <span className="ml-3 text-3xl font-CooperBlack text-white">
+                      <span className="ml-3 text-2xl md:text-3xl  text-white">
                         Fat Pig BBQ
                       </span>
                     </a>
@@ -76,31 +76,31 @@ function Navbar() {
                   <nav className="hidden md:flex space-x-10">
                     <a
                       href="/"
-                      className={`linkunderline text-lg font-medium text-white`}
+                      className={`nav-link text-lg font-medium text-white`}
                     >
                       Home
                     </a>
                     <a
                       href="/about-page"
-                      className={`linkunderline text-lg font-medium text-white`}
+                      className={`nav-link text-lg font-medium text-white`}
                     >
                       About
                     </a>
                     <a
                       href="/menu"
-                      className={`linkunderline text-lg font-medium text-white`}
+                      className={`nav-link text-lg font-medium text-white`}
                     >
                       Menu
                     </a>
                     {/* <a
                       href="/press"
-                      className={`linkunderline text-lg font-medium text-white`}
+                      className={`nav-link text-lg font-medium text-white`}
                     >
                       Press
                     </a>
                     <a
                       href="/shop"
-                      className={`linkunderline text-lg font-medium text-white`}
+                      className={`nav-link text-lg font-medium text-white`}
                     >
                       Shop
                     </a> */}
