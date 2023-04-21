@@ -1,20 +1,22 @@
 .linkunderline {
-    border-radius: 1px;
-    padding: 5px;
-    background-image: linear-gradient(transparent, transparent), linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
-    background-size: 0 3px;
-    background-position: 0 100%;
-    background-repeat: no-repeat;
-    transition: background-size .2s ease-in-out;
+  border-radius: 1px;
+  padding: 5px;
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(rgb(255, 255, 255), rgb(255, 255, 255));
+  background-size: 0 3px;
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  transition: background-size 0.2s ease-in-out;
 }
 
 .linkunderline-black {
-    background-image: linear-gradient(transparent, transparent), linear-gradient(#F2C, #F2C)
+  background-image: linear-gradient(transparent, transparent),
+    linear-gradient(#f2c, #f2c);
 }
 
 .linkunderline:hover {
-    background-size: 100% 3px;
-    background-position: 0 100%
+  background-size: 100% 3px;
+  background-position: 0 100%;
 }
 
 /* .text-white{
@@ -26,20 +28,52 @@
 } */
 
 .nav {
-    position: fixed;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    transition: .3s ease-in;
-    /* overflow: hidden; */
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  transition: 0.3s ease-in;
+  /* overflow: hidden; */
 }
 
 .nav-bg {
-    /* background-color: rgba(129,52,0,0.7); */
-    background-color: rgba(0, 0, 0, 0.462);
+  /* background-color: rgba(129,52,0,0.7); */
+  background-color: rgba(0, 0, 0, 0.462);
 }
 
 .nav-bg > .text-white {
-    color: beige;
+  color: beige;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-transform: uppercase;
+  text-decoration: none;
+  letter-spacing: 0.15em;
+
+  display: inline-block;
+  padding: 10px 20px;
+  position: relative;
+}
+.nav-link:after {
+  background: none repeat scroll 0 0 transparent;
+  bottom: 0;
+  content: "";
+  display: block;
+  height: 2px;
+  left: 50%;
+  position: absolute;
+  background: #ffffff;
+  transition: width 0.5s ease 0s, left 0.5s ease 0s;
+  width: 0;
+}
+.nav-link:hover:after {
+  width: 100%;
+  left: 0;
+}
+@media screen and (max-height: 300px) {
+  ul {
+    margin-top: 40px;
+  }
 }

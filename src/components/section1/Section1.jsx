@@ -5,7 +5,14 @@ import image3 from '../../assets/meals/pulledPorkSandwhich.jpg'
 import image4 from '../../assets/meals/cornbread.jpg'
 import image5 from '../../assets/meals/full-rack-ribs.jpg'
 
+import { useNavigate } from "react-router-dom";
 const Section1 = () => {
+  let navigate = useNavigate(); 
+  const routeChange = () =>{ 
+    let path = `/menu`; 
+    navigate(path);
+  }
+
   return (
     <div className='max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4'>
     {/* Left Side */}
@@ -46,7 +53,7 @@ const Section1 = () => {
         Here are some of our amazing meals and sides we offer
       </p>
       <div>
-        <button className='border-black mr-4 hover:shadow-xl px-4'>
+        <button className='border-black mr-4 hover:shadow-xl px-4' onClick={routeChange}>
           Menu
         </button>
       </div>

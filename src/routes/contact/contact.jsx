@@ -22,7 +22,7 @@ export default function Contact() {
       </div>
       <div className="container px-5 py-16 mx-auto">
         <div className="flex flex-col text-center w-full mb-12">
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-base">
+          <p className="lg:w-2/3 mx-auto leading-relaxed text-xl">
             Please feel free to reach out to us for any questions!
           </p>
         </div>

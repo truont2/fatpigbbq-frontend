@@ -1,7 +1,7 @@
 .google-map {
-    padding-bottom: 50%;
+    padding-bottom: 60%;
     position: relative;
-    border: dashed red;
+    /* border: dashed red; */
 }
 
 .google-map iframe {
