@@ -30,7 +30,7 @@ function Navbar() {
           <>
             {/* This example requires Tailwind CSS v2.0+ */}
             <div className="relative font-Roboto">
-              <div className="max-w-7xl mx-auto px-4 sm:px-6">
+              <div className="mx-auto px-4 sm:px-6">
                 <div className="flex justify-between items-center border-gray-100 py-6 md:justify-start md:space-x-10">
                   <div className="flex justify-start lg:w-0 lg:flex-1">
                     <a
@@ -43,7 +43,7 @@ function Navbar() {
                         src={logo}
                         alt="fat pig logo"
                       />
-                      <span className="ml-3 text-2xl md:text-3xl  text-white">
+                      <span className="ml-3 text-xl md:text-4xl  text-white">
                         Fat Pig BBQ
                       </span>
                     </a>
@@ -108,7 +108,7 @@ function Navbar() {
                   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
                     <a
                       href="/contact"
-                      className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-[#212427] bg-white hover:bg-[#212427] hover:text-white transition ease-out duration-200"
+                      className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-[#212427] bg-white hover:bg-[#212427] hover:text-white transition ease-out duration-200 text-lg"
                     >
                       Contact Us
                     </a>
