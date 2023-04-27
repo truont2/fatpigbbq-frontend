@@ -24,7 +24,7 @@ const Press = () => {
             src={edmondsBeacon}
           />
           <img
-            className="col-span-2 object-cover w-full h-full p-2 object-left"
+            className="col-span-2 object-cover w-full h-full p-2 object-center"
             src={seattleTimes}
             alt="/"
           />
@@ -32,7 +32,7 @@ const Press = () => {
         {/* Right Side */}
         <div className="grid grid-rows-3 gap-4">
           <a href="https://www.seattletimes.com/life/food-drink/head-to-edmonds-for-the-classic-dim-sum-cart-experience-and-some-tasty-bbq/" className="bg-neutral-100 p-2 flex flex-col justify-center">
-            <div>
+            <div className="p-3">
               <span className="mt-1 text-gray-500 text-sm">Nov 30, 2022</span>
               <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
                 Head to Edmonds for the classic dim sum cart experience and some
@@ -45,7 +45,7 @@ const Press = () => {
             </div>
           </a>
           <a href="https://visitedmonds.com/blog/post/fat-pig-bbq-is-amazeballs" className="bg-neutral-100 p-2 flex flex-col justify-center">
-            <div>
+            <div className="p-3">
               <span className="mt-1 text-gray-500 text-sm">May 12, 2021</span>
               <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
                 'Fat Pig BBQ is 'Amazeballs'
@@ -58,7 +58,7 @@ const Press = () => {
             </div>
           </a>
           <a href="https://www.edmondsbeacon.com/story/2018/07/13/news/southern-hospitality-makes-its-way-to-edmonds/19956.html" className="bg-neutral-100 p-2 flex flex-col justify-center">
-            <div>
+            <div className="p-3">
               <span className="mt-1 text-gray-500 text-sm">July 17, 2018</span>
               <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
                 Southern hospitality makes its way to Edmonds
