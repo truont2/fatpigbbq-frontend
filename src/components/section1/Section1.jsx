@@ -14,7 +14,7 @@ const Section1 = () => {
   }
 
   return (
-    <div className='max-w-[1600px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4'>
+    <div className='max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 gap-4'>
     {/* Left Side */}
     <div className='grid grid-cols-2 grid-rows-6 h-[80vh]'>
       <img
