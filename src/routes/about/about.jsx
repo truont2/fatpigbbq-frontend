@@ -6,6 +6,7 @@ import image3 from "../../assets/DSC_7018.jpg";
 import image4 from "../../assets/DSC_7022.jpg";
 import image5 from "../../assets/meals/porkMeal.jpg";
 import reggie from "../../assets/o.jpg";
+// import Carousel2 from "../../components/carousel/Carousel2";
 // import data from '../../assets/t.jpg'
 
 function About() {
@@ -25,6 +26,9 @@ function About() {
     {
       url: image5,
     },
+    // {
+    //   url: reggie,
+    // },
   ];
   return (
     <div>
@@ -57,8 +61,8 @@ function About() {
             in Edmonds.
           </p>
         </div>
-
-        <div className="h-[400px]">
+          {/* <Carousel2 images={slides} /> */}
+          <div className="h-[400px]">
           <img
             className="object-cover w-full h-full bg-fixed bg-no-repeat bg-auto  bg-center"
             src={reggie}

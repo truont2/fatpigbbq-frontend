@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
 import "./navbar.styles.css";
 
+// source https://codepen.io/Vinny92/pen/XWNdxvj
+
 function Navbar() {
   const [color, setColor] = useState(false);
   const [open, setOpen] = useState(false);
@@ -18,7 +20,7 @@ function Navbar() {
 
   window.addEventListener("scroll", changeColor);
 
-  // const [flyer, setFlyer] = useState(false);
+  const [flyer, setFlyer] = useState(false);
   // const [flyerTwo, setFlyerTwo] = useState(false);
   return (
     <>
@@ -43,19 +45,18 @@ function Navbar() {
                         src={logo}
                         alt="fat pig logo"
                       />
-                      <span className="ml-3 text-xl md:text-4xl  text-white">
+                      <span className="ml-3 text-xl md:text-2xl xl:text-4xl text-white invisible lg:visible">
                         Fat Pig BBQ
                       </span>
                     </a>
                   </div>
-                  <div className="-mr-2 -my-2 md:hidden">
+                  <div className="-mr-2 -my-2 md:hidden relative">
                     <button
                       type="button"
                       className="z-50 bg-white rounded-md p-2 inline-flex items-center justify-center text-gray-400 hover:text-gray-500 hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500"
                       onClick={() => setOpen(!open)}
                     >
                       <span className="sr-only">Open menu</span>
-                      {/* Heroicon name: outline/menu */}
                       <svg
                         className="h-6 w-6"
                         xmlns="http://www.w3.org/2000/svg"
@@ -73,24 +74,128 @@ function Navbar() {
                       </svg>
                     </button>
                   </div>
-                  <nav className="hidden md:flex space-x-10">
+                  <nav className="hidden md:flex">
+                    {/* drop down menu */}
+                    {/* <button
+                      type="button"
+                      className="
+                   group bg-white rounded-md text-gray-500 inline-flex items-center text-base font-medium hover:text-gray-900 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 pb-8'
+                  "
+                      onClick={() => setFlyer(!flyer)}
+                    >
+                      <span className="text-sm lg:text-lg">Solutions</span>
+                      <svg
+                        className={
+                          flyer === true
+                            ? "transform rotate-180 ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500 transition ease-out duration-200"
+                            : "transform rotate-0 transition ease-out duration-200 ml-2 h-5 w-5 text-gray-400 group-hover:text-gray-500"
+                        }
+                        xmlns="http://www.w3.org/2000/svg"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                        aria-hidden="true"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </button>
+                    <div
+                      onMouseLeave={() => setFlyer(false)}
+                      className={
+                        flyer
+                          ? " opacity-100 translate-y-0 transition ease-out duration-200 absolute z-10 -ml-4 mt-12 transform px-2 w-screen max-w-md sm:px-0 lg:-ml-10 lg:left-1/2 lg:-translate-x-3/4"
+                          : " opacity-0 translate-y-1 absolute -ml-4 mt-3 transform px-2 w-screen max-w-md sm:px-0 lg:ml-0 lg:left-1/2 lg:-translate-x-1/2 -z-50"
+                      }
+                    >
+                      <div className="rounded-lg shadow-lg ring-1 ring-black ring-opacity-5 overflow-hidden">
+                        <div className="relative grid gap-6 bg-white px-5 py-6 sm:gap-8 sm:p-8">
+                          <a
+                            href="/"
+                            className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                          >
+                            <svg
+                              className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"
+                              />
+                            </svg>
+                            <div className="ml-4">
+                              <p className="text-base font-medium text-gray-900">
+                                Analytics
+                              </p>
+                              <p className="mt-1 text-sm text-gray-500">
+                                Get a better understanding of where your traffic
+                                is coming from.
+                              </p>
+                            </div>
+                          </a>
+                          <a
+                            href="/"
+                            className="-m-3 p-3 flex items-start rounded-lg hover:bg-gray-50"
+                          >
+                            <svg
+                              className="flex-shrink-0 h-6 w-6 text-indigo-600"
+                              xmlns="http://www.w3.org/2000/svg"
+                              fill="none"
+                              viewBox="0 0 24 24"
+                              stroke="currentColor"
+                              aria-hidden="true"
+                            >
+                              <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth={2}
+                                d="M15 15l-2 5L9 9l11 4-5 2zm0 0l5 5M7.188 2.239l.777 2.897M5.136 7.965l-2.898-.777M13.95 4.05l-2.122 2.122m-5.657 5.656l-2.12 2.122"
+                              />
+                            </svg>
+                            <div className="ml-4">
+                              <p className="text-base font-medium text-gray-900">
+                                Engagement
+                              </p>
+                              <p className="mt-1 text-sm text-gray-500">
+                                Speak directly to your customers in a more
+                                meaningful way.
+                              </p>
+                            </div>
+                          </a>
+                        </div>
+                      </div>
+                    </div> */}
                     <a
                       href="/"
-                      className={`nav-link text-lg font-medium text-white`}
+                      className={`nav-link text-sm lg:text-lg font-medium text-white`}
                     >
                       Home
                     </a>
                     <a
                       href="/about-page"
-                      className={`nav-link text-lg font-medium text-white`}
+                      className={`nav-link text-sm lg:text-lg font-medium text-white`}
                     >
                       About
                     </a>
                     <a
                       href="/menu"
-                      className={`nav-link text-lg font-medium text-white`}
+                      className={`nav-link text-sm lg:text-lg font-medium text-white`}
                     >
                       Menu
+                    </a>
+                    <a
+                      href="/contact"
+                      className={`nav-link text-sm lg:text-lg font-medium text-white`}
+                    >
+                      Contact
                     </a>
                     {/* <a
                       href="/press"
@@ -106,12 +211,53 @@ function Navbar() {
                     </a> */}
                   </nav>
                   <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-                    <a
+                    {/* <a
                       href="/contact"
-                      className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-[#212427] bg-white hover:bg-[#212427] hover:text-white transition ease-out duration-200 text-lg"
+                      className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm font-medium text-[#212427] bg-white hover:bg-[#212427] hover:text-white transition ease-out duration-200 text-lg"
                     >
                       Contact Us
-                    </a>
+                    </a> */}
+                    <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start text-white">
+                      <a
+                        className=" ml-3"
+                        href="https://www.facebook.com/myfatpigbbq"
+                      >
+                        <svg
+                          fill="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          className="w-10 h-10"
+                          viewBox="0 0 32 32"
+                        >
+                          <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path>
+                        </svg>
+                      </a>
+                      <a
+                        className="ml-3 "
+                        href="https://www.instagram.com/fatpigbbq/"
+                      >
+                        <svg
+                          fill="none"
+                          stroke="currentColor"
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth="2"
+                          className="w-8 h-8"
+                          viewBox="0 0 32 32"
+                        >
+                          <rect
+                            width="24"
+                            height="24"
+                            x="4"
+                            y="4"
+                            rx="5"
+                            ry="5"
+                          ></rect>
+                          <path d="M22 14.96a5.5 5.5 0 11-4.04-5.24 5.5 5.5 0 014.04 5.24zm2 0h.01"></path>
+                        </svg>
+                      </a>
+                    </span>
                   </div>
                 </div>
               </div>

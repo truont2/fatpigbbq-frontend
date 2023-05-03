@@ -1,6 +1,9 @@
 import React from "react";
 // import styles from "../../styles/Navbar.module.css";
 // https://levelup.gitconnected.com/displaying-pdf-in-react-app-6e9d1fffa1a9
+import BackToTop from "../../components/backtotop/BackToTop.jsx";
+
+import { Link } from "react-scroll";
 import { mealItems, drinkItems, sideItems } from "./menuItems.js";
 import wallpaper from "../../assets/meal.jpeg";
 import menuPDF from "../../assets/menu.pdf";
@@ -8,6 +11,7 @@ import "./menu.styles.css";
 function Menu() {
   return (
     <section className="text-gray-600 body-font font-Roboto">
+      <BackToTop />
       <div className="relative w-screen bg-black overflow-hidden">
         <div
           className="bg-fixed bg-repeat-no bg-cover bg-left-bottom w-screen md:h-[250px] h-[100px] object-cover object-center opacity-70"
@@ -22,7 +26,7 @@ function Menu() {
       </div>
 
       <div className="max-w-[1400px] m-auto pt-6 px-4 flex justify-center flex-col items-center text-gray-500">
-        <div className="container md:px-5 py-10 mx-auto" key="meals">
+        <div className="container md:px-5 py-7 mx-auto" key="meals">
           <div className="w-fit mx-auto text-center text-gray-500  transition east-in-out ">
             <a
               href={menuPDF}
@@ -45,8 +49,83 @@ function Menu() {
             </div>
           </div>
 
+          <div
+            id="menu nav"
+            className="grid grid-cols-1 md:grid-cols-3 text-center max-w-[600px] mx-auto my-10 gap-3 "
+          >
+            <div>
+              <Link
+                to="meals"
+                smooth={true}
+                duration={800}
+                activeClass="active"
+                spy={true}
+                hashSpy={true}
+                offset={-100}
+                isDynamic={true}
+                ignoreCancelEvents={false}
+                spyThrottle={500}
+                className="cursor-pointer font-bold "
+              >
+                <div
+                  className="button button--winona p-0 relative block focus:outline-none border-2 border-solid rounded-lg text-sm text-center font-semibold uppercase tracking-widest align-middle overflow-hidden"
+                  data-text="Meals"
+                >
+                  <span className="align-middle block">Meals</span>
+                </div>
+              </Link>
+            </div>
+            <div>
+              <Link
+                to="sides"
+                smooth={true}
+                duration={800}
+                activeClass="active"
+                spy={true}
+                hashSpy={true}
+                offset={-100}
+                isDynamic={true}
+                ignoreCancelEvents={false}
+                spyThrottle={500}
+                className="cursor-pointer font-bold"
+              >
+                <div
+                  className="hover: button button--winona p-0 relative block focus:outline-none border-2 border-solid rounded-lg text-sm text-center font-semibold uppercase tracking-widest align-middle overflow-hidden"
+                  data-text="Sides"
+                >
+                  <span className="align-middle block">Sides</span>
+                </div>
+              </Link>
+            </div>
+            <div>
+              <Link
+                to="beverages"
+                smooth={true}
+                duration={800}
+                activeClass="active"
+                spy={true}
+                hashSpy={true}
+                offset={-100}
+                isDynamic={true}
+                ignoreCancelEvents={false}
+                spyThrottle={500}
+                className="cursor-pointer font-bold"
+              >
+                <div
+                  className="button button--winona p-0 relative block focus:outline-none border-2 border-solid rounded-lg text-sm text-center font-semibold uppercase tracking-widest align-middle overflow-hidden"
+                  data-text="Beverages"
+                >
+                  <span className="align-middle block">Beverages</span>
+                </div>
+              </Link>
+            </div>
+          </div>
+
           {/* content */}
-          <h3 className="text-4xl font-medium title-font mb-5 pt-5 text-center ">
+          <h3
+            className="text-4xl font-medium title-font mb-5 pt-5 text-center "
+            id="meals"
+          >
             Meals
           </h3>
           <div className="flex flex-wrap m-4 justify-center ">
@@ -57,8 +136,7 @@ function Menu() {
                   className="lg:w-1/4 md:w-1/2 py-4 md:p-4 w-full"
                   key={item.title}
                 >
-                  <a
-                    href="/"
+                  <div
                     className="block relative h-48 rounded overflow-hidden"
                   >
                     <img
@@ -66,7 +144,7 @@ function Menu() {
                       className="object-cover object-center w-full h-full block"
                       src={item.image}
                     />
-                  </a>
+                  </div>
                   <div className="mt-4">
                     <h2 className="text-gray-500 title-font text-lg my-1">
                       {item.title}
@@ -79,7 +157,7 @@ function Menu() {
             })}
           </div>
         </div>
-        <div className="container px-5 pt-10 mx-auto" key="sides">
+        <div className="container px-5 pt-10 mx-auto" key="sides" id="sides">
           <h3 className="text-4xl font-medium title-font font-CooperBlack text-gray-500 mb-5 pt-5 text-center">
             Sides
           </h3>
@@ -91,8 +169,7 @@ function Menu() {
                   className="lg:w-1/4 md:w-1/2 py-4 md:p-4 w-full"
                   key={item.title}
                 >
-                  <a
-                    href="/"
+                  <div
                     className="block relative h-48 rounded overflow-hidden"
                   >
                     <img
@@ -100,7 +177,7 @@ function Menu() {
                       className="object-cover object-center w-full h-full block"
                       src={item.image}
                     />
-                  </a>
+                  </div>
                   <div className="mt-4">
                     <h2 className="text-gray-600 title-font text-lg font-medium">
                       {item.title}
@@ -113,7 +190,11 @@ function Menu() {
             })}
           </div>
         </div>
-        <div className="container px-5 py-10 mx-auto" key="beverages">
+        <div
+          className="container px-5 py-10 mx-auto"
+          key="beverages"
+          id="beverages"
+        >
           <h3 className="text-4xl font-medium title-font font-CooperBlack text-gray-500 mb-5 pt-5 text-center">
             Beverages
           </h3>
@@ -126,7 +207,7 @@ function Menu() {
                   key={item.title}
                 >
                   <div className="mt-4">
-                    <a
+                    <div
                       href="/"
                       className="block relative h-48 rounded overflow-hidden"
                     >
@@ -135,7 +216,7 @@ function Menu() {
                         className="object-cover md:object-left object-center w-full h-full block"
                         src={item.image}
                       />
-                    </a>
+                    </div>
                     <h2 className="text-gray-600 title-font text-2xl font-medium ">
                       {item.title}
                     </h2>
