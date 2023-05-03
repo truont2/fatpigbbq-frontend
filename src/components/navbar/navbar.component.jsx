@@ -20,7 +20,7 @@ function Navbar() {
 
   window.addEventListener("scroll", changeColor);
 
-  const [flyer, setFlyer] = useState(false);
+  // const [flyer, setFlyer] = useState(false);
   // const [flyerTwo, setFlyerTwo] = useState(false);
   return (
     <>
