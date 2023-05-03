@@ -4,6 +4,7 @@
   display: flex;
   flex-direction: column;
   overflow:hidden;
+  scroll-behavior: smooth;
 }
 
 /*how to set footer at the bottom: https://www.youtube.com/watch?v=pggIVY5eOGM */
