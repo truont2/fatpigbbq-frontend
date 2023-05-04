@@ -15,32 +15,33 @@ const SectionTwo = ({ images }) => {
         <p className="text-xl pt-4">Choose to have your food delivered through these partnered companies!</p>
       </div>
       <div className="grid grid-cols-2 col-span-2 gap-2">
-        <a href='https://www.grubhub.com/restaurant/fat-pig-bbq-7533-olympic-view-dr-edmonds/970085?utm_source=google&utm_medium=cpc&utm_campaign=GH+PMax+ACQ+Test+9/20-10/31+INTERESTS+Final&utm_term=&utm_content=acct_id-4611562977:camp_id-18383322228:adgroup_id-::creative_id-:ext_id-:matchtype_id-:network-x:device-c:loc_interest-9033269:loc_physical-9033260&gclid=CjwKCAjwitShBhA6EiwAq3RqAyAqcmERfXPXkgKkLZTJgV3MIyULJORsfxrwG1Q67zBu5k_zt85bIRoClu4QAvD_BwE&gclsrc=aw.ds'>
+        <a className="relative overflow-hidden bg-cover bg-no-repeat" href='https://fatpigbbq.dine.online/'>
           <img
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full transition duration-300 ease-in-out hover:scale-110"
             src={grubhub}
-            alt="grubhub"
+            alt="grubhub link"
           />
         </a>
-        <a href='https://www.grubhub.com/restaurant/fat-pig-bbq-7533-olympic-view-dr-edmonds/970085?utm_source=google&utm_medium=cpc&utm_campaign=GH+PMax+ACQ+Test+9/20-10/31+INTERESTS+Final&utm_term=&utm_content=acct_id-4611562977:camp_id-18383322228:adgroup_id-::creative_id-:ext_id-:matchtype_id-:network-x:device-c:loc_interest-9033269:loc_physical-9033260&gclid=CjwKCAjwitShBhA6EiwAq3RqAyAqcmERfXPXkgKkLZTJgV3MIyULJORsfxrwG1Q67zBu5k_zt85bIRoClu4QAvD_BwE&gclsrc=aw.ds'>
+        <a className="relative overflow-hidden bg-cover bg-no-repeat" href='https://www.ubereats.com/store/fat-pig-bbq/S0VhUzV1RnyR1Jh3vmWdHw'>
+          
           <img
-            className="object-cover w-full h-full"
+            className="object-cover w-full h-full transition duration-300 ease-in-out hover:scale-110"
             src={uber}
-            alt="grubhub"
+            alt="ubereats link"
           />
         </a>
-        <a className="col-span-1" href='https://www.grubhub.com/restaurant/fat-pig-bbq-7533-olympic-view-dr-edmonds/970085?utm_source=google&utm_medium=cpc&utm_campaign=GH+PMax+ACQ+Test+9/20-10/31+INTERESTS+Final&utm_term=&utm_content=acct_id-4611562977:camp_id-18383322228:adgroup_id-::creative_id-:ext_id-:matchtype_id-:network-x:device-c:loc_interest-9033269:loc_physical-9033260&gclid=CjwKCAjwitShBhA6EiwAq3RqAyAqcmERfXPXkgKkLZTJgV3MIyULJORsfxrwG1Q67zBu5k_zt85bIRoClu4QAvD_BwE&gclsrc=aw.ds'>
+        <a className="relative overflow-hidden bg-cover bg-no-repeat" href='https://www.doordash.com/store/fat-pig-bbq-edmonds-429805/'>
           <img
-            className="object-contain w-full m-auto"
+            className="object-cover w-full h-full transition duration-300 ease-in-out hover:scale-110"
             src={doordash}
-            alt="uber"
+            alt="Doordash link"
           />
         </a>
-        <a className="col-span-1" href='https://www.grubhub.com/restaurant/fat-pig-bbq-7533-olympic-view-dr-edmonds/970085?utm_source=google&utm_medium=cpc&utm_campaign=GH+PMax+ACQ+Test+9/20-10/31+INTERESTS+Final&utm_term=&utm_content=acct_id-4611562977:camp_id-18383322228:adgroup_id-::creative_id-:ext_id-:matchtype_id-:network-x:device-c:loc_interest-9033269:loc_physical-9033260&gclid=CjwKCAjwitShBhA6EiwAq3RqAyAqcmERfXPXkgKkLZTJgV3MIyULJORsfxrwG1Q67zBu5k_zt85bIRoClu4QAvD_BwE&gclsrc=aw.ds'>
+        <a className="relative overflow-hidden bg-cover bg-no-repeat" href='/'>
           <img
-            className="object-contain w-full m-auto"
+            className="object-cover w-full h-full transition duration-300 ease-in-out hover:scale-110"
             src={delivery}
-            alt="uber"
+            alt="person delivering a carry out order"
           />
         </a>
       </div>
