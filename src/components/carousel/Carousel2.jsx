@@ -52,7 +52,7 @@ export default class MultipleItems extends Component {
         <Slider {...settings}>
           {images.map((image, key) => {
             return (
-              <div>
+              <div key={key}>
                 <img
                   src={image.url}
                   alt="placeholder"
