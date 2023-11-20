@@ -25,56 +25,56 @@ export const mealItems = [
     {
       title: "CHICKEN MEAL SMALL", 
       "type": "Meals", 
-      "description": "Chicken Thigh, 1 Roll Coleslaw, Backed Beans,", 
+      "description": "Chicken Thigh, 1 Roll Coleslaw, Baked Beans,", 
       "price": "12.50", 
       image: smChkMeal
     },
     {
       title: "CHICKEN MEAL LARGE", 
-      "type": "1/4 Chicken, 1 Roll Coleslaw, Backed Beans, 1/2 Corn", 
-      "description": "1/4 Chicken, 1 Roll Coleslaw, Backed Beans, 1/2 Corn", 
+      "type": "1/4 Chicken, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
+      "description": "1/4 Chicken, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
       "price": "14.50", 
       image: lgChkMeal
     },
     {
       title: "RIBS MEAL SMALL", 
-      "type": "3 Ribs, 1 Roll Coleslaw, Backed Beans", 
-      "description": "3 Ribs, 1 Roll Coleslaw, Backed Beans", 
+      "type": "3 Ribs, 1 Roll Coleslaw, Baked Beans", 
+      "description": "3 Ribs, 1 Roll Coleslaw, Baked Beans", 
       "price": "12.50", 
       image: smRibsMeal
     },
     {
       title: "RIBS MEAL LARGE", 
       "type": "Meals", 
-      "description": "4 Ribs, 1 Roll Coleslaw, Backed Beans, 1/2 Corn", 
+      "description": "4 Ribs, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
       "price": "14.50", 
       image: lgRibsMeal
     },
     {
       title: "RIBS & CHICKEN COMBO SMALL", 
       "type": "Meals", 
-      "description": "2 Ribs, Chicken Drumstick, 1 Roll Coleslaw, Backed Beans", 
+      "description": "2 Ribs, Chicken Drumstick, 1 Roll Coleslaw, Baked Beans", 
       "price": "12.50", 
-      image: lgRibsMeal
+      image: smRibsMeal
     },
     {
       title: "RIBS & CHICKEN COMBO LARGE", 
       "type": "Meals", 
-      "description": "2 Ribs, Chicken Thigh, 1 Roll Coleslaw, Backed Beans, 1/2 Corn", 
+      "description": "2 Ribs, Chicken Thigh, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
       "price": "14.50", 
       image: lgChkMeal
     },
     {
       title: "PULLED PORK MEAL SMALL", 
       "type": "Meals", 
-      "description": "Pulled Pork, 1 Roll Coleslaw, Backed Beans", 
+      "description": "Pulled Pork, 1 Roll Coleslaw, Baked Beans", 
       "price": "12.50", 
       image: porkMeal
     },
     {
       title: "PULLED PORK MEAL LARGE", 
       "type": "Meals", 
-      "description": " Extra Pulled Pork, 1 Roll Coleslaw, Backed Beans, 1/2 Corn", 
+      "description": " Extra Pulled Pork, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
       "price": "14.50", 
       image: porkMeal
     },
