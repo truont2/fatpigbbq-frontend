@@ -89,7 +89,7 @@ export const mealItems = [
       title: "FULL RACK OF RIBS", 
       "type": "Meals", 
       "description": "Consists of 11 individual ribs and topped with extra barbecue sauce. Meat only", 
-      "price": "24.95", 
+      "price": "25.95", 
       image: fullrackribs
     },
     {
@@ -188,7 +188,7 @@ export const mealItems = [
       title: "SODA", 
       "type": "Meals", 
       "description": "test", 
-      "price": "1.50", 
+      "price": "1.95", 
       image: soda
     },
     {
