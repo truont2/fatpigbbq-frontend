@@ -15,7 +15,7 @@ const Hero = () => {
       <img
         className="top-0 left-0 w-full h-[90vh] object-cover bg-no-repeat bg-auto bg-fixed bg-center" 
         src={image}
-        alt="hero"
+        alt="hero fat pig outside"
       />
       <div className='bg-black/30 absolute top-0 left-0 w-full h-[90vh]' />
       <div className='absolute top-0 w-full h-full flex flex-col justify-center text-white'>

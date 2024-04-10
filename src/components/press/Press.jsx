@@ -12,21 +12,21 @@ const Press = () => {
       <h1 className="text-6xl pb-10 font-bold">Fat Pig in the news.</h1>
       <div className="m-auto grid lg:grid-cols-2 gap-4">
         {/* Left Side */}
-        <div className="grid grid-cols-2 grid-rows-2 h-fit">
+        <div className="grid grid-cols-2 grid-rows-2">
           <img
             className="col-span-1 object-cover object-fit w-full h-full p-2"
             src={visitEdmonds}
-            alt="/"
+            alt="visit edmonds logo"
           />
           <img
-            alt="/"
+            alt="Edmonds beacon logo"
             className="col-span-1 object-center object-fit w-full h-full p-2"
             src={edmondsBeacon}
           />
           <img
             className="col-span-2 object-cover w-full h-full p-2 object-center"
             src={seattleTimes}
-            alt="/"
+            alt="Seattle times logo"
           />
         </div>
         {/* Right Side */}
