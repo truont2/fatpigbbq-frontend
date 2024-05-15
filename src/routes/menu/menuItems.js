@@ -26,70 +26,70 @@ export const mealItems = [
       title: "CHICKEN MEAL SMALL", 
       "type": "Meals", 
       "description": "Chicken Thigh, 1 Roll Coleslaw, Baked Beans,", 
-      "price": "12.50", 
+      "price": "13.50", 
       image: smChkMeal
     },
     {
       title: "CHICKEN MEAL LARGE", 
       "type": "1/4 Chicken, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
       "description": "1/4 Chicken, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.50", 
+      "price": "14.95", 
       image: lgChkMeal
     },
     {
       title: "RIBS MEAL SMALL", 
       "type": "3 Ribs, 1 Roll Coleslaw, Baked Beans", 
       "description": "3 Ribs, 1 Roll Coleslaw, Baked Beans", 
-      "price": "12.50", 
+      "price": "13.50", 
       image: smRibsMeal
     },
     {
       title: "RIBS MEAL LARGE", 
       "type": "Meals", 
       "description": "4 Ribs, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.50", 
+      "price": "14.95", 
       image: lgRibsMeal
     },
     {
       title: "RIBS & CHICKEN COMBO SMALL", 
       "type": "Meals", 
       "description": "2 Ribs, Chicken Drumstick, 1 Roll Coleslaw, Baked Beans", 
-      "price": "12.50", 
+      "price": "13.50", 
       image: smRibsMeal
     },
     {
       title: "RIBS & CHICKEN COMBO LARGE", 
       "type": "Meals", 
       "description": "2 Ribs, Chicken Thigh, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.50", 
+      "price": "14.95", 
       image: lgChkMeal
     },
     {
       title: "PULLED PORK MEAL SMALL", 
       "type": "Meals", 
       "description": "Pulled Pork, 1 Roll Coleslaw, Baked Beans", 
-      "price": "12.50", 
+      "price": "13.50", 
       image: porkMeal
     },
     {
       title: "PULLED PORK MEAL LARGE", 
       "type": "Meals", 
       "description": " Extra Pulled Pork, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.50", 
+      "price": "14.95", 
       image: porkMeal
     },
     {
       title: "HALF RACK OF RIBS", 
       "type": "Meals", 
       "description": "Six individual Ribs. Meat only", 
-      "price": "14.95", 
+      "price": "15.95", 
       image: halfrack
     },
     {
       title: "FULL RACK OF RIBS", 
       "type": "Meals", 
       "description": "Consists of 11 individual ribs and topped with extra barbecue sauce. Meat only", 
-      "price": "25.95", 
+      "price": "26.95", 
       image: fullrackribs
     },
     {
@@ -103,7 +103,7 @@ export const mealItems = [
       title: "PULLED PORK SANDWICH DOUBLE MEAT", 
       "type": "Meals", 
       "description": "Served on sandwich buns and topped with some fresh coleslaw with double the amount of meat", 
-      "price": "6.95", 
+      "price": "7.50", 
       image: largePPSandwich
     },
     {
@@ -128,21 +128,21 @@ export const mealItems = [
       title: "BAKED BEANS", 
       "type": "Meals", 
       "description": "12oz of baked beans", 
-      "price": "3.50", 
+      "price": "3.95", 
       image: beans
     },
     {
       title: "COLESLAW", 
       "type": "Meals", 
       "description": "12oz of coleslaw", 
-      "price": "3.50", 
+      "price": "3.95", 
       image: coleslaw
     },
     {
       title: "POTATO SALAD", 
       "type": "Meals", 
       "description": "12oz of potato salad", 
-      "price": "3.50", 
+      "price": "3.95", 
       image: potato
     },
 
@@ -178,7 +178,7 @@ export const mealItems = [
       title: "CORNBREAD", 
       "type": "Meals", 
       "description": "cornbread", 
-      "price": "3.50", 
+      "price": "3.95", 
       image: cornbread
     },
   ];
