@@ -1,7 +1,6 @@
-import "./navbar.styles.css";
-import logo from "../../assets/fatpiglogo.png";
-import React, { useState } from "react";
 import { Disclosure } from "@headlessui/react";
+import React, { useState } from "react";
+import logo from "../../assets/fatpiglogo.png";
 import "./navbar.styles.css";
 
 // source https://codepen.io/Vinny92/pen/XWNdxvj
@@ -45,7 +44,7 @@ function Navbar() {
                         src={logo}
                         alt="fat pig logo"
                       />
-                      <span className="ml-3 text-xl md:text-2xl xl:text-4xl text-white invisible lg:visible">
+                      <span className="ml-3 text-xl md:text-2xl xl:text-4xl text-white invisible lg:visible  font-semibold">
                         Fat Pig BBQ
                       </span>
                     </a>
