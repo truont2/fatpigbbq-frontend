@@ -20,6 +20,7 @@ import potato from '../../assets/meals/potato.jpg'
 import coleslaw from '../../assets/meals/coleslaw.jpg'
 import porkMeal from '../../assets/meals/porkMeal.jpg'
 import rib from '../../assets/meals/rib.webp'
+import pulledPork from '../../assets/meals/pullledPork.jpg'
 
 export const mealItems = [
     {
@@ -33,7 +34,7 @@ export const mealItems = [
       title: "CHICKEN MEAL LARGE", 
       "type": "1/4 Chicken, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
       "description": "1/4 Chicken, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.95", 
+      "price": "15.50", 
       image: lgChkMeal
     },
     {
@@ -47,7 +48,7 @@ export const mealItems = [
       title: "RIBS MEAL LARGE", 
       "type": "Meals", 
       "description": "4 Ribs, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.95", 
+      "price": "15.50", 
       image: lgRibsMeal
     },
     {
@@ -61,7 +62,7 @@ export const mealItems = [
       title: "RIBS & CHICKEN COMBO LARGE", 
       "type": "Meals", 
       "description": "2 Ribs, Chicken Thigh, 1 Roll Coleslaw, Baked Beans, 1/2 Corn", 
-      "price": "14.95", 
+      "price": "15.50", 
       image: lgChkMeal
     },
     {
@@ -103,7 +104,7 @@ export const mealItems = [
       title: "PULLED PORK SANDWICH DOUBLE MEAT", 
       "type": "Meals", 
       "description": "Served on sandwich buns and topped with some fresh coleslaw with double the amount of meat", 
-      "price": "7.50", 
+      "price": "7.95", 
       image: largePPSandwich
     },
     {
@@ -120,29 +121,29 @@ export const mealItems = [
     {
       title: "WHOLE CORN ON THE COB", 
       "type": "Meals", 
-      "description": "STEAMED CORN ON THE TOPPED WITH BUTTER AND SALT", 
-      "price": "3.50", 
+      "description": "Steamed corn topped with butter and salt", 
+      "price": "4.25", 
       image: corn
     },
     {
       title: "BAKED BEANS", 
       "type": "Meals", 
       "description": "12oz of baked beans", 
-      "price": "3.95", 
+      "price": "4.25", 
       image: beans
     },
     {
       title: "COLESLAW", 
       "type": "Meals", 
       "description": "12oz of coleslaw", 
-      "price": "3.95", 
+      "price": "4.25", 
       image: coleslaw
     },
     {
       title: "POTATO SALAD", 
       "type": "Meals", 
       "description": "12oz of potato salad", 
-      "price": "3.95", 
+      "price": "4.25", 
       image: potato
     },
 
@@ -150,14 +151,14 @@ export const mealItems = [
       title: "CHICKEN QUARTER", 
       "type": "Meals", 
       "description": "Chicken Thigh and Drumstick together", 
-      "price": "6.50", 
+      "price": "6.75", 
       image: chkQuarter
     },
     {
       title: "CHICKEN THIGH", 
       "type": "Meals", 
       "description": "Barbeque Chicken Thigh.", 
-      "price": "3.95", 
+      "price": "4.95", 
       image: thigh
     },
     {
@@ -171,15 +172,22 @@ export const mealItems = [
       title: "INDIVIDUAL RIB", 
       "type": "Meals", 
       "description": "One individual rib", 
-      "price": 2.95, 
+      "price": "3.50", 
       image: rib
     },
     {
       title: "CORNBREAD", 
       "type": "Meals", 
       "description": "cornbread", 
-      "price": "3.95", 
+      "price": "4.25", 
       image: cornbread
+    },
+    {
+      title: "Pulled Pork Cup", 
+      "type": "Meals", 
+      "description": "12oz cup of Pulled Pork", 
+      "price": "7.95", 
+      image: pulledPork
     },
   ];
 
@@ -188,14 +196,14 @@ export const mealItems = [
       title: "SODA", 
       "type": "Meals", 
       "description": "test", 
-      "price": "1.95", 
+      "price": "2.00", 
       image: soda
     },
     {
       title: "BOTTLED WATER", 
       "type": "Meals", 
       "description": "test", 
-      "price": "1.00", 
+      "price": "1.50", 
       image: water
     },
     {
