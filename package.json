@@ -11,6 +11,7 @@
     "dotenv": "^16.0.3",
     "flowbite": "^1.6.4",
     "flowbite-react": "^0.4.2",
+    "framer-motion": "^12.23.26",
     "leaflet": "^1.9.3",
     "leaflet-defaulticon-compatibility": "^0.1.1",
     "leaflet-geosearch": "^3.6.0",
