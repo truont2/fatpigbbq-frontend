@@ -1,21 +1,15 @@
 import React from "react";
-import "./location.styles.css";
 
-// https://developers.google.com/maps/documentation/embed/get-started
-
-export default function Location({ data }) {
+export default function Location() {
   return (
+    <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
+      <div className="grid lg:grid-cols-2 gap-12 bg-white rounded-3xl shadow-2xl overflow-hidden">
 
-      <div className="max-w-[1400px] m-auto py-16 px-4 grid lg:grid-cols-2 grid-cols-1 md:gap-10 gap-0">
-        {/* need to hide the api key  */}
-        {/* https://www.freecodecamp.org/news/hide-api-keys-in-frontend-apps-using-netlify-functions/#:~:text=Create%20a%20serverless%20function&text=In%20this%20functions%20directory%2C%20create,images%20from%20the%20Pixabay%20API. */}
-        {/* https://blog.hubspot.com/website/how-to-embed-google-map-in-html#:~:text=To%20make%20a%20responsive%20Google,with%20the%20class%20google%2Dmap. */}
-        <div className="google-map">
+        {/* Map Section */}
+        <div className="h-[400px] lg:h-full min-h-[400px]">
           <iframe
-          className="col-span-1 lg:col-span-2"
-            title="test"
-            width="900"
-            height="450"
+            className="w-full h-full"
+            title="Fat Pig BBQ Location"
             style={{ border: "0" }}
             loading="lazy"
             allowFullScreen
@@ -23,30 +17,43 @@ export default function Location({ data }) {
             src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS}&q=fat+pig+bbq, Edmonds+WA`}
           ></iframe>
         </div>
-        <div className="flex flex-col md:ml-auto w-full md:py-8 mt-8 md:mt-0 font-Roboto lg:col-span-1 col-span-2 text-gray-500">
-          <h1 className=" text-4xl mb-1 font-large title-font">
-            Information
-          </h1>
-          <div className="relative my-4">
-            <h2 className="title-font font-semibold  tracking-widest text-s">
-              LOCATION
-            </h2>
-            <p className="mt-1">7533 Olympic View Dr, Edmonds, WA 98026</p>
+
+        {/* Info Section */}
+        <div className="p-12 flex flex-col justify-center bg-gray-50">
+          <h2 className="text-4xl font-serif font-bold text-gray-900 mb-8">Visit Us</h2>
+
+          <div className="space-y-8">
+            <div>
+              <h3 className="text-sm font-bold text-brand-red tracking-widest uppercase mb-2">Location</h3>
+              <p className="text-xl text-gray-700 font-medium">7533 Olympic View Dr<br />Edmonds, WA 98026</p>
+            </div>
+
+            <div>
+              <h3 className="text-sm font-bold text-brand-red tracking-widest uppercase mb-2">Hours</h3>
+              <ul className="space-y-2 text-lg text-gray-600">
+                <li className="flex justify-between max-w-xs">
+                  <span>Mon - Thurs</span>
+                  <span className="font-semibold text-gray-900">11:00 AM - 7:30 PM</span>
+                </li>
+                <li className="flex justify-between max-w-xs">
+                  <span>Fri - Sat</span>
+                  <span className="font-semibold text-gray-900">11:00 AM - 8:00 PM</span>
+                </li>
+                <li className="flex justify-between max-w-xs text-red-500">
+                  <span>Sunday</span>
+                  <span className="font-semibold">Closed</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="bg-brand-cream/50 p-4 rounded-lg border border-brand-red/10">
+              <p className="text-sm text-gray-500 italic">
+                * Hours may vary during holidays. Check our Facebook page for updates.
+              </p>
+            </div>
           </div>
-          <div className="relative mb-4">
-            <h2 className="title-font font-semibold tracking-widest text-s">
-              HOURS
-            </h2>
-            <p className="mt-1">Mon - Thurs: 11am - 7:30pm</p>
-            <p className="mt-1">Fri: 11am - 8:00pm</p>
-            <p className="mt-1">Sat: 11am - 8:00pm</p>
-          </div>
-          <h6>Note:</h6>
-          <p>
-            Hours may be subject to change during the holidays. Please check our
-            facebook for any updated information. Thank you!
-          </p>
         </div>
       </div>
+    </div>
   );
 }

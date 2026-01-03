@@ -11,14 +11,16 @@ import Press from "../../components/press/Press";
 // website tutorial 
 // https://www.youtube.com/watch?v=l5gP3a--NpA&t=59s
 
+import OurProcess from "../../components/home/OurProcess";
+
 export default function Home() {
 
   return (
     <>
-      {/* <Carousel autoSlide={false} slides={slides}></Carousel> */}
       <Hero />
       <Section1 />
-      <SectionTwo /> 
+      <OurProcess />
+      <SectionTwo />
       <Reviews />
       <Press />
       <Location />

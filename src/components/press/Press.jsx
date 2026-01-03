@@ -1,76 +1,72 @@
 import React from "react";
-// import wallpaper from "../../assets/meal.jpeg";
+
 import visitEdmonds from "../../assets/visitEdmonds.png";
 import seattleTimes from "../../assets/seattle-times-logo-960x450.jpg";
 import edmondsBeacon from "../../assets/edmondsBeacon.png";
-// https://www.edmondsbeacon.com/story/2018/07/13/news/southern-hospitality-makes-its-way-to-edmonds/19956.html
-// https://www.seattletimes.com/life/food-drink/head-to-edmonds-for-the-classic-dim-sum-cart-experience-and-some-tasty-bbq/
-// https://visitedmonds.com/blog/post/fat-pig-bbq-is-amazeballs
+
 const Press = () => {
+  const articles = [
+    {
+      date: "Nov 30, 2022",
+      title: "Head to Edmonds for the classic dim sum cart experience and some tasty BBQ",
+      excerpt: "They were incredibly tender, and the barbecue sauce softened up the little blackened bits that were clinging to the edges.",
+      link: "https://www.seattletimes.com/life/food-drink/head-to-edmonds-for-the-classic-dim-sum-cart-experience-and-some-tasty-bbq/",
+      logo: seattleTimes
+    },
+    {
+      date: "May 12, 2021",
+      title: "'Fat Pig BBQ is 'Amazeballs'",
+      excerpt: "Customers rave about the fall-off-the-bone meat, the perfect sauce, and the delicious from-scratch cornbread at this hole-in-the-wall.",
+      link: "https://visitedmonds.com/blog/post/fat-pig-bbq-is-amazeballs",
+      logo: visitEdmonds
+    },
+    {
+      date: "July 17, 2018",
+      title: "Southern hospitality makes its way to Edmonds",
+      excerpt: "Passion for food and a sense of community is one thing that transcends culture and race, and Truong is a prime example of that.",
+      link: "https://www.edmondsbeacon.com/story/2018/07/13/news/southern-hospitality-makes-its-way-to-edmonds/19956.html",
+      logo: edmondsBeacon
+    }
+  ];
+
   return (
-    <div className="max-w-[1400px] m-auto my-16 px-4">
-      <h1 className="text-6xl pb-10 font-bold">Fat Pig in the news.</h1>
-      <div className="m-auto grid lg:grid-cols-2 gap-4">
-        {/* Left Side */}
-        <div className="grid grid-cols-2 grid-rows-2">
-          <img
-            className="col-span-1 object-cover object-fit w-full h-full p-2"
-            src={visitEdmonds}
-            alt="visit edmonds logo"
-          />
-          <img
-            alt="Edmonds beacon logo"
-            className="col-span-1 object-center object-fit w-full h-full p-2"
-            src={edmondsBeacon}
-          />
-          <img
-            className="col-span-2 object-cover w-full h-full p-2 object-center"
-            src={seattleTimes}
-            alt="Seattle times logo"
-          />
-        </div>
-        {/* Right Side */}
-        <div className="grid grid-rows-3 gap-4">
-          <a href="https://www.seattletimes.com/life/food-drink/head-to-edmonds-for-the-classic-dim-sum-cart-experience-and-some-tasty-bbq/" className="bg-neutral-100 p-2 flex flex-col justify-center">
-            <div className="p-3">
-              <span className="mt-1 text-gray-500 text-sm">Nov 30, 2022</span>
-              <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                Head to Edmonds for the classic dim sum cart experience and some
-                tasty BBQ
-              </h2>
-              <p className="leading-relaxed">
-                They were incredibly tender, and the barbecue sauce softened up
-                the little blackened bits that were clinging to the edges.
+    <div className="max-w-7xl mx-auto my-24 px-4 sm:px-6 lg:px-8">
+      <div className="text-center mb-16">
+        <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">Fat Pig in the News</h2>
+        <div className="w-24 h-1 bg-brand-red mx-auto rounded"></div>
+      </div>
+
+      <div className="grid lg:grid-cols-3 gap-8">
+        {articles.map((article, index) => (
+          <a
+            key={index}
+            href={article.link}
+            target="_blank"
+            rel="noreferrer"
+            className="flex flex-col bg-white rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 overflow-hidden border border-gray-100 group"
+          >
+            <div className="h-48 bg-white p-6 flex items-center justify-center border-b border-gray-50">
+              <img
+                src={article.logo}
+                alt="News Logo"
+                className="max-h-full max-w-full object-contain"
+              />
+            </div>
+            <div className="p-8 flex-1 flex flex-col">
+              <span className="text-sm font-semibold text-brand-red mb-2">{article.date}</span>
+              <h3 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-red transition-colors">
+                {article.title}
+              </h3>
+              <p className="text-gray-600 leading-relaxed flex-1">
+                "{article.excerpt}"
               </p>
+              <div className="mt-4 text-sm font-bold text-gray-900 flex items-center">
+                Read Article
+                <span className="ml-2 group-hover:translate-x-1 transition-transform">&rarr;</span>
+              </div>
             </div>
           </a>
-          <a href="https://visitedmonds.com/blog/post/fat-pig-bbq-is-amazeballs" className="bg-neutral-100 p-2 flex flex-col justify-center">
-            <div className="p-3">
-              <span className="mt-1 text-gray-500 text-sm">May 12, 2021</span>
-              <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                'Fat Pig BBQ is 'Amazeballs'
-              </h2>
-              <p className="leading-relaxed">
-                Customers rave about the fall-off-the-bone meat, the perfect
-                sauce, and the delicious from-scratch cornbread at this
-                hole-in-the-wall, pick-up-and-go barbecue restaurant.
-              </p>
-            </div>
-          </a>
-          <a href="https://www.edmondsbeacon.com/story/2018/07/13/news/southern-hospitality-makes-its-way-to-edmonds/19956.html" className="bg-neutral-100 p-2 flex flex-col justify-center">
-            <div className="p-3">
-              <span className="mt-1 text-gray-500 text-sm">July 17, 2018</span>
-              <h2 className="text-2xl font-medium text-gray-900 title-font mb-2">
-                Southern hospitality makes its way to Edmonds
-              </h2>
-              <p className="leading-relaxed">
-                Passion for food and a sense of community is one thing that
-                transcends culture and race, and Truong is a prime example of
-                that.
-              </p>
-            </div>
-          </a>
-        </div>
+        ))}
       </div>
     </div>
   );

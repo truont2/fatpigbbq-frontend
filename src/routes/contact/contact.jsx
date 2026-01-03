@@ -1,97 +1,139 @@
 import React from "react";
+import { motion } from "framer-motion";
 import wallpaper from "../../assets/meal.jpeg";
 
 export default function Contact() {
   return (
-    <div>
-    <section className="text-gray-600 body-font relative font-Roboto">
-    <div className="relative w-screen bg-black overflow-hidden">
-        {/* background-repeat: no-repeat;
-  background-size: auto;
-  /* background-attachment: fixed; 
-  background-position: center; */}
+    <div className="bg-gray-50 font-sans">
+      {/* Hero Section */}
+      <div className="relative h-[50vh] min-h-[400px] overflow-hidden">
         <div
-          className="bg-fixed bg-repeat-no bg-cover bg-left-bottom w-screen md:h-[250px] h-[100px] object-cover object-center opacity-70"
+          className="absolute inset-0 bg-cover bg-center"
           style={{ backgroundImage: `url(${wallpaper})` }}
-        ></div>
-        <div className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h1 className="md:visible invisible md:text-4xl text-4xl font-medium title-font text-center font-CooperBlack">
+        >
+          <div className="absolute inset-0 bg-black/60" />
+        </div>
+        <div className="absolute inset-0 flex items-center justify-center">
+          <motion.h1
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={{ opacity: 1, scale: 1 }}
+            className="text-6xl md:text-7xl font-serif font-bold text-white drop-shadow-lg"
+          >
             Contact Us
-          </h1>
+          </motion.h1>
         </div>
       </div>
-      <div className="container px-5 py-16 mx-auto">
-        <div className="flex flex-col text-center w-full mb-12">
-          <p className="lg:w-2/3 mx-auto leading-relaxed text-xl">
-            Please feel free to reach out to us for any questions!
-          </p>
-        </div>
-        <div className="lg:w-1/2 md:w-2/3 mx-auto">
-          <form action="https://formsubmit.co/fca1ecffd8e29794c41b539d334e8485" method="POST">
-            <div className="flex flex-wrap -m-2">
-              <div className="p-2 w-1/2">
-                <div className="relative">
-                  <label for="name" className="leading-7 text-sm text-gray-600">
-                    Name
-                  </label>
+
+      <div className="max-w-7xl mx-auto py-24 px-4 sm:px-6 lg:px-8">
+
+        <div className="grid lg:grid-cols-2 gap-16">
+
+          {/* Contact Info Side */}
+          <div className="space-y-12">
+            <div>
+              <h2 className="text-4xl font-serif font-bold text-gray-900 mb-6">Get in Touch</h2>
+              <p className="text-xl text-gray-600 leading-relaxed">
+                Have a question about our menu, catering services, or just want to say hello? Fill out the form or reach out directly!
+              </p>
+            </div>
+
+            <div className="space-y-6">
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-brand-red text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-bold text-gray-900">Visit Us</h3>
+                  <p className="mt-1 text-gray-600">7533 Olympic View Dr, Edmonds, WA 98026</p>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-brand-red text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-bold text-gray-900">Call Us</h3>
+                  <a href="tel:4253617640" className="mt-1 text-gray-600 hover:text-brand-red transition-colors">(425) 361-7640</a>
+                </div>
+              </div>
+
+              <div className="flex items-start">
+                <div className="flex-shrink-0">
+                  <div className="flex items-center justify-center h-12 w-12 rounded-full bg-brand-red text-white">
+                    <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </div>
+                </div>
+                <div className="ml-4">
+                  <h3 className="text-lg font-bold text-gray-900">Email Us</h3>
+                  <a href="mailto:fatbigbbq@yahoo.com" className="mt-1 text-gray-600 hover:text-brand-red transition-colors">fatbigbbq@yahoo.com</a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Form Side */}
+          <div className="bg-white rounded-3xl shadow-xl p-8 md:p-12 border border-gray-100">
+            <form action="https://formsubmit.co/fca1ecffd8e29794c41b539d334e8485" method="POST" className="space-y-6">
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                  <label htmlFor="name" className="block text-sm font-bold text-gray-700 mb-2">Name</label>
                   <input
                     type="text"
                     id="name"
                     name="name"
                     required
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    style={{fontFamily: "Arial"}}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-shadow bg-gray-50 focus:bg-white"
                   />
                 </div>
-              </div>
-              <div className="p-2 w-1/2">
-                <div className="relative">
-                  <label for="email" className="leading-7 text-sm text-gray-600">
-                    Email
-                  </label>
+                <div>
+                  <label htmlFor="email" className="block text-sm font-bold text-gray-700 mb-2">Email</label>
                   <input
                     type="email"
                     id="email"
                     name="email"
                     required
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 text-base outline-none text-gray-700 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
-                    style={{fontFamily: "Arial"}}
+                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-shadow bg-gray-50 focus:bg-white"
                   />
                 </div>
               </div>
-              <div className="p-2 w-full">
-                <div className="relative">
-                  <label for="message" className="leading-7 text-sm text-gray-600">
-                    Message
-                  </label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    className="w-full bg-gray-100 bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500 focus:bg-white focus:ring-2 focus:ring-indigo-200 h-36 text-base outline-none text-gray-700 py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
-                    style={{fontFamily: "Arial"}}
-                    required
-                  ></textarea>
-                </div>
+
+              <div>
+                <label htmlFor="message" className="block text-sm font-bold text-gray-700 mb-2">Message</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="5"
+                  required
+                  className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-shadow bg-gray-50 focus:bg-white resize-none"
+                ></textarea>
               </div>
-              <div className="p-2 w-full">
-                <button className="flex mx-auto bg-[#813400] hover:bg-[#212427] text-white font-semibold hover:text-white py-2 px-4 rounded transition ease-out duration-200">
-                  Send Message
-                </button>
-              </div>
-              <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
-                <a href="mailto:fatbigbbq@yahoo.com">fatbigbbq@yahoo.com</a><br />
-                <a href="tel:4253617640" className="mt-3">(425) 361-7640</a>
-                <p className="leading-normal my-5">
-                  7533 Olympic View Drive
-                  <br />
-                  Edmonds, WA 98026
-                </p>
-              </div>
-            </div>
-          </form>
+
+              <motion.button
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="w-full bg-brand-red text-white font-bold py-4 rounded-full shadow-lg hover:bg-red-800 transition-colors"
+              >
+                Send Message
+              </motion.button>
+
+            </form>
+          </div>
+
         </div>
       </div>
-    </section >
     </div>
   );
 }
