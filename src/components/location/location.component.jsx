@@ -19,8 +19,8 @@ export default function Location() {
         </div>
 
         {/* Info Section */}
-        <div className="p-12 flex flex-col justify-center bg-gray-50">
-          <h2 className="text-4xl font-serif font-bold text-gray-900 mb-8">Visit Us</h2>
+        <div className="p-12 flex flex-col justify-center bg-[#FDFBF7]">
+          <h2 className="text-4xl font-serif font-bold text-[#1F1A17] mb-8">Visit Us</h2>
 
           <div className="space-y-8">
             <div>

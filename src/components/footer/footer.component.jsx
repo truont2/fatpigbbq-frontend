@@ -3,7 +3,7 @@ import logo from '../../assets/fatpiglogo.png';
 
 const Footer = () => {
   return (
-    <footer className="bg-neutral-900 text-white font-sans border-t border-neutral-800">
+    <footer className="bg-brand-dark text-white font-sans border-t border-brand-red/20">
       <div className="max-w-7xl mx-auto px-5 py-16">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
 
@@ -16,7 +16,7 @@ const Footer = () => {
               </span>
             </a>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Authentic smoked BBQ in the heart of Edmonds. We believe in slow cooking and fast service.
+              Authentic slow-cooked, flame-grilled BBQ in the heart of Edmonds. Fast service, unforgettable flavor.
             </p>
           </div>
 
@@ -55,7 +55,7 @@ const Footer = () => {
         </div>
       </div>
 
-      <div className="bg-black py-6 border-t border-neutral-800">
+      <div className="bg-black/20 py-6 border-t border-white/5">
         <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
           <p>© {new Date().getFullYear()} Fat Pig BBQ. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Made with 🔥 in Edmonds</p>

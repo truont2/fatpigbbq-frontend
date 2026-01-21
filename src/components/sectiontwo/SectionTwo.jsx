@@ -1,53 +1,53 @@
 import React from "react";
-import { motion } from "framer-motion";
-
-import grubhub from "../../assets/logo_grubhub.avif";
-import uber from '../../assets/uber.jpg'
-import doordash from '../../assets/doordash-860x452.png'
 
 const SectionTwo = () => {
   const platforms = [
-    { name: 'GrubHub', img: grubhub, url: 'https://fatpigbbq.dine.online/' },
-    { name: 'Uber Eats', img: uber, url: 'https://www.ubereats.com/store/fat-pig-bbq/S0VhUzV1RnyR1Jh3vmWdHw' },
-    { name: 'DoorDash', img: doordash, url: 'https://www.doordash.com/store/fat-pig-bbq-edmonds-429805/' },
+    { name: 'GrubHub', url: 'https://fatpigbbq.dine.online/' },
+    { name: 'Uber Eats', url: 'https://www.ubereats.com/store/fat-pig-bbq/S0VhUzV1RnyR1Jh3vmWdHw' },
+    { name: 'DoorDash', url: 'https://www.doordash.com/store/fat-pig-bbq-edmonds-429805/' },
   ];
 
   return (
-    <div className="bg-white py-24">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="bg-brand-cream py-24 border-t border-brand-red/10">
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h3 className="text-4xl font-serif font-bold text-gray-900 mb-4">
-            Order Online from Home
+          <div className="inline-block border-b-2 border-brand-red pb-2 mb-6">
+            <span className="text-brand-red tracking-widest uppercase text-sm font-bold">Delivery Partners</span>
+          </div>
+          <h3 className="text-4xl md:text-5xl font-serif font-bold text-[#1F1A17] mb-6">
+            Order Online
           </h3>
-          <p className="text-xl text-gray-600 max-w-2xl mx-auto">
-            Craving BBQ but want to stay in? We've partnered with top delivery services to bring the smokehouse to your doorstep.
+          <p className="text-xl text-gray-600 max-w-2xl mx-auto font-serif italic leading-relaxed">
+            Cozy night in? We've partnered with the best to bring our slow-cooked BBQ straight to your dining table.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div className="flex flex-col md:flex-row gap-6 justify-center items-stretch">
           {platforms.map((platform, index) => (
-            <motion.a
+            <a
               key={platform.name}
               href={platform.url}
               target="_blank"
               rel="noreferrer"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: index * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group relative h-64 rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all duration-300 bg-gray-50 border border-gray-100"
+              className="group flex-1 relative bg-white border-2 border-[#E5E0D8] p-10 text-center hover:border-brand-red/30 transition-all duration-300 hover:-translate-y-1 shadow-sm hover:shadow-md flex flex-col items-center justify-center min-h-[200px]"
             >
-              <div className="absolute inset-0 bg-brand-red/0 group-hover:bg-brand-red/5 transition-colors z-10" />
-              <img
-                className="w-full h-full object-contain p-8 transition-all duration-500"
-                src={platform.img}
-                alt={`${platform.name} logo`}
-              />
-              <div className="absolute inset-x-0 bottom-0 bg-white/90 p-4 z-20 opacity-0 group-hover:opacity-100 transition-opacity text-center border-t border-gray-100">
-                <span className="text-brand-red font-bold text-lg">Order on {platform.name} &rarr;</span>
+              {/* Decorative Corner accents */}
+              <div className="absolute top-2 left-2 w-3 h-3 border-t border-l border-brand-red opacity-50 group-hover:opacity-100 transition-opacity"></div>
+              <div className="absolute bottom-2 right-2 w-3 h-3 border-b border-r border-brand-red opacity-50 group-hover:opacity-100 transition-opacity"></div>
+
+              {/* Content */}
+              <div className="space-y-4">
+                <h4 className="text-3xl font-bold text-[#1F1A17] font-serif group-hover:text-brand-red transition-colors">
+                  {platform.name}
+                </h4>
+
+                <div className="w-12 h-px bg-gray-200 mx-auto group-hover:bg-brand-red/30 transition-colors"></div>
+
+                <span className="text-xs uppercase tracking-widest font-bold text-gray-400 group-hover:text-brand-red/70 transition-colors block mt-2">
+                  Order Now &rarr;
+                </span>
               </div>
-            </motion.a>
+            </a>
           ))}
         </div>
       </div>
