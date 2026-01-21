@@ -35,16 +35,16 @@ const Reviews = () => {
   }, [data.length]);
 
   return (
-    <div className="bg-stone-100 py-24 text-gray-900 relative overflow-hidden">
+    <div className="bg-[#F6F4EF] py-24 text-[#2C2C2C] relative overflow-hidden">
       {/* Background Decor - Subtle */}
       <div className="absolute top-0 left-0 w-64 h-64 bg-brand-red/5 rounded-full blur-3xl transform -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-64 h-64 bg-brand-orange/5 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-64 h-64 bg-yellow-500/5 rounded-full blur-3xl transform translate-x-1/2 translate-y-1/2"></div>
 
       <div className="max-w-4xl mx-auto px-6 text-center relative z-10">
         <div className="text-center mb-16">
           <h2 className="text-sm font-bold text-brand-red uppercase tracking-widest mb-2">Testimonials</h2>
-          <h2 className="text-4xl font-serif font-bold text-gray-900 mb-4">What Our Customers Say</h2>
-          <div className="w-24 h-1 bg-brand-red mx-auto rounded"></div>
+          <h2 className="text-4xl font-serif font-bold text-[#1F1A17] mb-4">What Our Customers Say</h2>
+          <div className="w-24 h-1 bg-brand-red mx-auto rounded opacity-50"></div>
         </div>
 
         <div className="relative min-h-[300px] flex items-center justify-center">
@@ -58,11 +58,11 @@ const Reviews = () => {
               className="absolute inset-0 flex flex-col items-center justify-center"
             >
               {/* Stars */}
-              <div className="flex items-center space-x-1 mb-6">
+              <div className="flex items-center space-x-1 mb-8">
                 {[...Array(5)].map((_, index) => (
                   <svg
                     key={index}
-                    className={`w-5 h-5 ${index < data[currentIndex].rating ? "text-brand-orange" : "text-gray-300"}`}
+                    className={`w-6 h-6 ${index < data[currentIndex].rating ? "text-[#D4AF37]" : "text-gray-300"}`} // Gold color for stars
                     fill="currentColor"
                     viewBox="0 0 20 20"
                   >
@@ -71,11 +71,11 @@ const Reviews = () => {
                 ))}
               </div>
 
-              <blockquote className="text-xl md:text-3xl font-serif italic text-gray-800 leading-normal mb-8 max-w-2xl">
+              <blockquote className="text-xl md:text-3xl font-serif italic text-[#1F1A17] leading-relaxed mb-10 max-w-3xl">
                 "{data[currentIndex].review}"
               </blockquote>
 
-              <cite className="not-italic font-bold text-lg text-brand-red tracking-wide uppercase">
+              <cite className="not-italic font-bold text-lg text-brand-red tracking-wide uppercase font-sans">
                 — {data[currentIndex].name}
               </cite>
             </motion.div>
@@ -88,7 +88,7 @@ const Reviews = () => {
             <button
               key={idx}
               onClick={() => setCurrentIndex(idx)}
-              className={`w-3 h-3 rounded-full transition-all duration-300 border-none ${idx === currentIndex ? "bg-brand-red w-8" : "bg-gray-300 hover:bg-gray-400"
+              className={`w-3 h-3 rounded-full transition-all duration-300 border-none ${idx === currentIndex ? "bg-brand-red w-8" : "bg-[#D1CCC0] hover:bg-[#BDB8AC]"
                 }`}
             />
           ))}
@@ -99,7 +99,7 @@ const Reviews = () => {
             href="https://www.yelp.com/biz/fat-pig-bbq-edmonds"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-gray-500 hover:text-brand-red transition-colors border-b border-transparent hover:border-brand-red pb-1"
+            className="text-sm font-semibold text-gray-500 hover:text-brand-red transition-colors border-b border-transparent hover:border-brand-red pb-1 tracking-wider uppercase"
           >
             Read more on Yelp
           </a>

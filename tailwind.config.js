@@ -13,8 +13,8 @@ module.exports = {
       colors: {
         brand: {
           red: '#b91c1c', // Rich BBQ Red
-          dark: '#1a1a1a', // Charcoal
-          cream: '#fffbeb', // Warm background
+          dark: '#1F1A17', // Charcoal
+          cream: '#FDFBF7', // Warm background
           gold: '#facc15', // Accent
         }
       }

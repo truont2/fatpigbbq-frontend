@@ -12,6 +12,8 @@ import Press from "../../components/press/Press";
 // https://www.youtube.com/watch?v=l5gP3a--NpA&t=59s
 
 import OurProcess from "../../components/home/OurProcess";
+import CateringSection from "../../components/home/CateringSection";
+import PopularFavorites from "../../components/home/PopularFavorites";
 
 export default function Home() {
 
@@ -20,7 +22,9 @@ export default function Home() {
       <Hero />
       <Section1 />
       <OurProcess />
+      <CateringSection />
       <SectionTwo />
+      <PopularFavorites />
       <Reviews />
       <Press />
       <Location />
