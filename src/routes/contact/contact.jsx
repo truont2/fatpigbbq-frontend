@@ -82,8 +82,8 @@ export default function Contact() {
                 </div>
                 <div className="ml-6">
                   <h3 className="text-xs font-bold text-gray-500 uppercase tracking-widest mb-2">Email Us</h3>
-                  <a href="mailto:fatbigbbq@yahoo.com" className="text-lg text-[#1F1A17] font-serif hover:text-brand-red transition-colors block border-b border-gray-300 hover:border-brand-red pb-0.5 w-fit">
-                    fatbigbbq@yahoo.com
+                  <a href="mailto:fatpigbbq@yahoo.com" className="text-lg text-[#1F1A17] font-serif hover:text-brand-red transition-colors block border-b border-gray-300 hover:border-brand-red pb-0.5 w-fit">
+                    fatpigbbq@yahoo.com
                   </a>
                 </div>
               </div>
