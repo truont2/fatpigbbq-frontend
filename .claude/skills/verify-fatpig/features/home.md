@@ -33,5 +33,5 @@ Preconditions:
 - The hero image fades in only after a 5.7 MB JPEG loads, so screenshots taken immediately can show a black hero. `wait h1`, then allow about 1s.
 - The home Catering teaser starts at `opacity:0` (framer-motion `whileInView`). It is blank in full-page shots until scrolled.
 - The reviews auto-advance every 6s, so assertions on the text race the timer. Click a dot first, then read within 6s.
-- The map iframe is blank locally unless `REACT_APP_GOOGLE_MAPS` is set in `.env`. Treat the map as unverifiable locally and note it.
+- Without `REACT_APP_GOOGLE_MAPS`, the map falls back to the keyless `maps.google.com/...&output=embed`. With the key it uses the v1 embed API, which is only verifiable where the key is set.
 - GrubHub links differ: the home card goes to `fatpigbbq.dine.online`, while the footer goes to `grubhub.com`.

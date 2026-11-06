@@ -70,6 +70,12 @@ $V cleanup
 
 Cleanup kills only the process group that `launch` recorded (never by process name), removes `/tmp/fatpig-verify/state/<port>`, keeps the run's evidence directory, and reports whether the port is free. Run it after every attempt, including failed ones.
 
+## Playwright
+
+`@playwright/test` is a devDependency (Chromium via `npx playwright install chromium`). Use it for scripted multi-step flows, device emulation (`devices['iPhone 13']`), `reducedMotion`, and network/response checks. Resolve it from the repo with `createRequire(<repo>/package.json)` when a script lives outside the repo. Point it at `$($V url)`, the instance `launch` started, and write screenshots under `$($V out)`.
+
+- `node .claude/skills/verify-fatpig/smoke.mjs "$($V url)" "$($V out)/smoke"` is a regression smoke for previously fixed bugs (sticky menu tabs, scroll reset, mobile menu close, active nav, back-to-top, 404 on mobile, catering tel link, footer links/logo, no 4xx responses). It prints PASS/FAIL per check and exits 1 on any failure.
+
 ## Helpers
 
 - `verify.sh`: `launch | doctor | b <browse args> | shot <name> [flags] | url [path] | out | cleanup`. Env: `FATPIG_PORT` (default 3100), `BROWSE_BIN`, `FATPIG_VERIFY_ROOT`.

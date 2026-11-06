@@ -25,7 +25,7 @@ Preconditions:
 - Instance is healthy, with the desktop viewport set.
 
 - **Desktop link.** From `/`, click Menu. Run `$V b js "[...document.querySelectorAll('nav a')].find(a=>a.innerText.trim()==='MENU').click()"`, then `$V b wait "#meals"` and `$V b url`. The URL ends in `/menu` and the h1 reads `Our Menu`.
-- **Active state.** Run `$V b js "[...document.querySelectorAll('nav a')].filter(a=>getComputedStyle(a).color==='rgb(185, 28, 28)').map(a=>a.innerText)"`. It returns `["MENU"]` while on `/menu`.
+- **Active state.** Run `$V b js "document.querySelector('nav a[aria-current=page]').innerText"`. It returns `MENU` on `/menu`, with white text and a red `border-bottom`.
 - **Logo home.** Run `$V b click "nav a[href='/']"`. The URL is `/` and the hero h1 contains `Fat Pig`.
 - **Mobile menu.** Run `$V b device "iPhone 14"`, `$V b goto "$($V url /)"`, then `$V b snapshot -i` and click the button named `Open main menu`. Five link names appear in the panel. Tap `CONTACT`, and the URL is `/contact`.
 - **Unknown route.** Run `$V b goto "$($V url /order)"`, then `$V b text`. The text contains `Page under construction`, plus the nav and footer.
@@ -34,6 +34,6 @@ Preconditions:
 ## Gotchas
 
 - Nav labels are uppercased by CSS. `innerText` is `MENU`, while the DOM text is `Menu`.
-- The active color is brand red `rgb(185, 28, 28)` on a dark hero photo, which has low contrast by design (see the design audit F1). The check is by computed color, not visual legibility.
-- On the 404 page the heading is `invisible md:visible`, so on mobile the page shows no text at all. That is an existing bug, not a driver error.
+- Hover styles apply only to non-active links. Move the mouse away before reading computed styles on a link you just clicked.
+- After tapping a link in the mobile menu, the panel closes and the new page starts at scroll 0 (fixed 2026-11-05).
 - The scrolled-nav style uses a window scroll listener with a threshold of 20px. Scroll with `$V b scroll footer` before asserting.
