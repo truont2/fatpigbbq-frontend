@@ -195,21 +195,21 @@ export const mealItems = [
     {
       title: "SODA", 
       "type": "Meals", 
-      "description": "test", 
+      "description": "", 
       "price": "2.00", 
       image: soda
     },
     {
       title: "BOTTLED WATER", 
       "type": "Meals", 
-      "description": "test", 
+      "description": "", 
       "price": "1.50", 
       image: water
     },
     {
       title: "BEER", 
       "type": "Meals", 
-      "description": "test", 
+      "description": "", 
       "price": "3.50", 
       image: beer
     },
