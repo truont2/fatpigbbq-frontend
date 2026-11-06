@@ -99,7 +99,7 @@ const Reviews = () => {
             href="https://www.yelp.com/biz/fat-pig-bbq-edmonds"
             target="_blank"
             rel="noopener noreferrer"
-            className="text-sm font-semibold text-gray-500 hover:text-brand-red transition-colors border-b border-transparent hover:border-brand-red pb-1 tracking-wider uppercase"
+            className="text-sm font-semibold text-gray-600 hover:text-brand-red transition-colors border-b border-transparent hover:border-brand-red pb-1 tracking-wider uppercase"
           >
             Read more on Yelp
           </a>

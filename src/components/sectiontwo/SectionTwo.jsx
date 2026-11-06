@@ -43,7 +43,7 @@ const SectionTwo = () => {
 
                 <div className="w-12 h-px bg-gray-200 mx-auto group-hover:bg-brand-red/30 transition-colors"></div>
 
-                <span className="text-xs uppercase tracking-widest font-bold text-gray-400 group-hover:text-brand-red/70 transition-colors block mt-2">
+                <span className="text-xs uppercase tracking-widest font-bold text-gray-600 group-hover:text-brand-red/70 transition-colors block mt-2">
                   Order Now &rarr;
                 </span>
               </div>

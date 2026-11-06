@@ -56,7 +56,7 @@ const Catering = () => {
                                     To ensure the best quality, we don't use a fixed catering menu. Instead, we tailor pricing based on your specific needs and party size.
                                 </p>
                                 <p>
-                                    <span className="font-bold text-brand-red">Call us directly</span> or stop by the restaurant to discuss your event. We love being part of your special occasions!
+                                    <a href="tel:+14253617640" className="font-bold text-brand-red underline underline-offset-4 hover:text-red-800">Call us at (425) 361-7640</a> or stop by the restaurant to discuss your event. We love being part of your special occasions!
                                 </p>
                                 <div className="pt-6 font-sans text-sm text-gray-500 italic">
                                     *Please try to give us 24-48 hours notice for large orders so our small team can prepare everything perfectly.
