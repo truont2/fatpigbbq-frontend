@@ -14,7 +14,7 @@ const InProgress = () => {
           style={{ backgroundImage: `url(${wallpaper})` }}
         ></div>
         <div className="absolute text-5xl text-white top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-          <h1 className="invisible md:visible md:text-4xl text-4xl font-medium title-font text-center">
+          <h1 className="text-2xl md:text-4xl font-medium title-font text-center whitespace-nowrap">
             Page under construction
           </h1>
         </div>
