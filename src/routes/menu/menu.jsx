@@ -1,5 +1,4 @@
-import React from "react";
-import { Link } from "react-scroll";
+import React, { useEffect, useState } from "react";
 
 import BackToTop from "../../components/backtotop/BackToTop.jsx";
 import { mealItems, drinkItems, sideItems } from "./menuItems.js";
@@ -7,12 +6,30 @@ import wallpaper from "../../assets/meal.jpeg";
 import menuPDF from "../../assets/menu.pdf";
 import "./menu.styles.css";
 
+const sections = [
+  { id: "meals", label: "Meals", items: mealItems },
+  { id: "sides", label: "Sides", items: sideItems },
+  { id: "beverages", label: "Beverages", items: drinkItems },
+];
+
 function Menu() {
-  const sections = [
-    { id: "meals", label: "Meals", items: mealItems },
-    { id: "sides", label: "Sides", items: sideItems },
-    { id: "beverages", label: "Beverages", items: drinkItems },
-  ];
+  const [activeId, setActiveId] = useState(sections[0].id);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) setActiveId(entry.target.id);
+        });
+      },
+      { rootMargin: "-200px 0px -60% 0px" }
+    );
+    sections.forEach(({ id }) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+    return () => observer.disconnect();
+  }, []);
 
   return (
     <div className="bg-brand-cream font-serif min-h-screen text-[#2C2C2C]">
@@ -49,18 +66,18 @@ function Menu() {
         <div className="sticky top-20 z-30 bg-brand-cream/95 backdrop-blur-sm py-6 mb-16 border-b border-brand-red/10">
           <div className="flex justify-center space-x-6 md:space-x-12">
             {sections.map(({ id, label }) => (
-              <Link
+              <a
                 key={id}
-                to={id}
-                smooth={true}
-                duration={500}
-                spy={true}
-                offset={-150}
-                className="cursor-pointer text-lg md:text-xl font-bold text-gray-500 hover:text-brand-red transition-colors select-none font-serif italic"
-                activeClass="text-brand-red! border-b-2 border-brand-red"
+                href={`#${id}`}
+                aria-current={activeId === id ? "true" : undefined}
+                className={`text-lg md:text-xl font-bold border-b-2 transition-colors select-none font-serif italic hover:text-brand-red ${
+                  activeId === id
+                    ? "text-brand-red border-brand-red"
+                    : "text-gray-500 border-transparent"
+                }`}
               >
                 {label}
-              </Link>
+              </a>
             ))}
           </div>
         </div>
@@ -68,7 +85,7 @@ function Menu() {
         {/* Menu Sections */}
         <div className="space-y-32">
           {sections.map(({ id, label, items }) => (
-            <div key={id} id={id} className="relative">
+            <div key={id} id={id} className="relative scroll-mt-48">
               {/* Section Header */}
               <div className="text-center mb-16">
                 <h2 className="text-5xl font-bold text-[#1F1A17] mb-4">{label}</h2>
