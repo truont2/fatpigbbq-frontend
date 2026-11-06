@@ -76,6 +76,8 @@ Cleanup kills only the process group that `launch` recorded (never by process na
 
 - `node .claude/skills/verify-fatpig/smoke.mjs "$($V url)" "$($V out)/smoke"` is a regression smoke for previously fixed bugs (sticky menu tabs, scroll reset, mobile menu close, active nav, back-to-top, 404 on mobile, catering tel link, footer links/logo, no 4xx responses). It prints PASS/FAIL per check and exits 1 on any failure.
 
+- `node .claude/skills/verify-fatpig/visual-audit.mjs "$($V url)" "$($V out)/visual-audit"` sweeps every route at desktop, tablet, and mobile, clicks every in-app control, records video, and screenshots each step. It flags text that is covered, clipped, off-screen, hidden, or below WCAG AA contrast, and menu-tab jumps that leave the heading under the sticky bar. The report is `issues.json` next to `steps/` and `video/`. Known non-bugs: review-carousel lines caught mid-fade (`hidden-text`), hover colors left behind by the previous tap (`low-contrast` on a link), and mobile `back-to-top` (`control-missing`, because the button is hidden below 768px by design).
+
 ## Helpers
 
 - `verify.sh`: `launch | doctor | b <browse args> | shot <name> [flags] | url [path] | out | cleanup`. Env: `FATPIG_PORT` (default 3100), `BROWSE_BIN`, `FATPIG_VERIFY_ROOT`.

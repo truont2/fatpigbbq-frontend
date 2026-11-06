@@ -47,6 +47,44 @@ await m.goto(B + '/order', { waitUntil: 'networkidle' });
 ok('mobile-404-heading', await m.locator('h1', { hasText: 'Page under construction' }).isVisible(), {});
 await m.screenshot({ path: OUT + '/fix-mobile-404.png' });
 const hov = await m.evaluate(() => document.documentElement.scrollWidth <= innerWidth); ok('mobile-404-no-hscroll', hov, {});
+// menu tab jumps leave the section heading fully visible below the sticky bar, and the active tab is red
+for (const [vp, o] of [['desktop', { viewport: { width: 1440, height: 900 } }], ['mobile', devices['iPhone 13']]]) {
+  const pg = await (await b.newContext(o)).newPage();
+  await pg.goto(B + '/menu', { waitUntil: 'networkidle' });
+  for (const tab of ['Sides', 'Beverages', 'Meals']) {
+    await pg.getByText(tab, { exact: true }).first().click(); await pg.mouse.move(5, 600); await pg.waitForTimeout(1600);
+    const t = await pg.evaluate(label => {
+      const bar = document.querySelector('.sticky').getBoundingClientRect();
+      const h = [...document.querySelectorAll('h2')].find(x => x.innerText.trim() === label).getBoundingClientRect();
+      const active = [...document.querySelectorAll('.sticky a')].find(a => a.innerText.trim() === label);
+      return { barBottom: Math.round(bar.bottom), headingTop: Math.round(h.top), vh: innerHeight, activeColor: getComputedStyle(active).color };
+    }, tab);
+    ok(`menu-heading-clear-${vp}-${tab}`, t.headingTop >= t.barBottom + 8 && t.headingTop < t.vh / 2, t);
+    ok(`menu-active-tab-red-${vp}-${tab}`, t.activeColor === 'rgb(185, 28, 28)', t.activeColor);
+  }
+  await pg.screenshot({ path: OUT + `/menu-tab-${vp}.png` });
+}
+// tablet nav: wordmark stays on one line and does not overlap any nav link
+const tb = await (await b.newContext({ viewport: { width: 768, height: 1024 } })).newPage();
+await tb.goto(B + '/', { waitUntil: 'networkidle' });
+const nav = await tb.evaluate(() => {
+  const brand = [...document.querySelectorAll('nav span')].find(s => s.innerText.trim() === 'FAT PIG BBQ' || s.innerText.trim() === 'Fat Pig BBQ').getBoundingClientRect();
+  const links = [...document.querySelectorAll('nav a')].filter(a => a.offsetParent && a.getBoundingClientRect().width && /^(home|about|menu|catering|contact)$/i.test(a.innerText.trim())).map(a => a.getBoundingClientRect());
+  const hit = links.some(l => !(l.right <= brand.left || l.left >= brand.right || l.bottom <= brand.top || l.top >= brand.bottom));
+  return { brandHeight: Math.round(brand.height), overlaps: hit };
+});
+ok('tablet-nav-no-overlap', nav.brandHeight <= 32 && !nav.overlaps, nav);
+await tb.screenshot({ path: OUT + '/tablet-nav.png', clip: { x: 0, y: 0, width: 768, height: 120 } });
+// map card: map and info panel touch, no exposed card background between them
+for (const [vp, o] of [['desktop', { viewport: { width: 1440, height: 900 } }], ['mobile', devices['iPhone 13']]]) {
+  const pg = await (await b.newContext(o)).newPage();
+  await pg.goto(B + '/', { waitUntil: 'networkidle' });
+  const f = pg.locator('iframe[title="Fat Pig BBQ Location"]'); await f.scrollIntoViewIfNeeded(); await pg.waitForTimeout(400);
+  const g = await f.evaluate(fr => { const m = fr.parentElement.getBoundingClientRect(), i = fr.parentElement.parentElement.children[1].getBoundingClientRect(); return { gapX: Math.round(i.left - m.right), gapY: Math.round(i.top - m.bottom) }; });
+  ok(`map-no-gap-${vp}`, vp === 'desktop' ? g.gapX === 0 : g.gapY === 0, g);
+  await f.evaluate(fr => fr.parentElement.parentElement.scrollIntoView({ block: 'center' }));
+  await pg.screenshot({ path: OUT + `/map-card-${vp}.png` });
+}
 ok('no-console-errors', errs.length === 0, errs.slice(0, 3));
 await b.close();
 const failed = Object.entries(res).filter(([, v]) => !v).map(([k]) => k);
