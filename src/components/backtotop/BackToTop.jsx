@@ -1,32 +1,26 @@
 import React, { useState, useEffect } from "react";
-import { BsChevronCompactDown } from "react-icons/bs";
+import { BsChevronUp } from "react-icons/bs";
 
 const BackToTop = () => {
-  const [backToTop, setBackToTop] = useState(false);
+  const [visible, setVisible] = useState(false);
 
   useEffect(() => {
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 100) {
-        setBackToTop(true);
-      } else {
-        setBackToTop(false);
-      }
-    });
+    const onScroll = () => setVisible(window.scrollY > 600);
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  const scrollUp = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: "smooth",
-    });
-  };
+  if (!visible) return null;
 
   return (
-    <>
-      {backToTop && <div className="fixed md:bottom-16 md:right-16 md:h-16 md:w-16 bg-red-500 shadow-lg text-white flex justify-center items-center rounded-full hover:rotate-180 transition hover:bg-green-900 cursor-pointer bottom-2 right-2 h-8 w-8 z-50">
-        <BsChevronCompactDown onClick={() => scrollUp()} size={25} />
-      </div>}
-    </>
+    <button
+      type="button"
+      aria-label="Back to top"
+      onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
+      className="fixed bottom-4 right-4 md:bottom-10 md:right-10 z-40 h-12 w-12 flex items-center justify-center rounded-full border-0 p-0 bg-brand-red text-white shadow-lg hover:bg-red-800 active:scale-95 transition-colors"
+    >
+      <BsChevronUp size={20} aria-hidden="true" />
+    </button>
   );
 };
 
