@@ -22,7 +22,7 @@ const Footer = () => {
 
           {/* Links Column */}
           <div>
-            <h3 className="text-brand-red font-bold tracking-wider text-sm mb-4 uppercase">Company</h3>
+            <h3 className="text-red-400 font-bold tracking-wider text-sm mb-4 uppercase">Company</h3>
             <ul className="space-y-3">
               <li><a href="/about-page" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all inline-block">About Us</a></li>
               <li><a href="/menu" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all inline-block">Our Menu</a></li>
@@ -32,7 +32,7 @@ const Footer = () => {
 
           {/* Delivery Column */}
           <div>
-            <h3 className="text-brand-red font-bold tracking-wider text-sm mb-4 uppercase">Order Online</h3>
+            <h3 className="text-red-400 font-bold tracking-wider text-sm mb-4 uppercase">Order Online</h3>
             <ul className="space-y-3">
               <li><a href="https://www.ubereats.com/store/fat-pig-bbq/S0VhUzV1RnyR1Jh3vmWdHw" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all inline-block">Uber Eats</a></li>
               <li><a href="https://www.doordash.com/store/fat-pig-bbq-edmonds-429805/" target="_blank" rel="noreferrer" className="text-gray-300 hover:text-white hover:translate-x-1 transition-all inline-block">DoorDash</a></li>
@@ -42,7 +42,7 @@ const Footer = () => {
 
           {/* Social / Contact Column */}
           <div>
-            <h3 className="text-brand-red font-bold tracking-wider text-sm mb-4 uppercase">Follow Us</h3>
+            <h3 className="text-red-400 font-bold tracking-wider text-sm mb-4 uppercase">Follow Us</h3>
             <div className="flex space-x-4">
               <a href="https://www.facebook.com/myfatpigbbq" target="_blank" rel="noreferrer" aria-label="Fat Pig BBQ on Facebook" className="bg-neutral-800 p-3 rounded-full hover:bg-brand-red transition-colors">
                 <svg fill="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"></path></svg>
@@ -56,7 +56,7 @@ const Footer = () => {
       </div>
 
       <div className="bg-black/20 py-6 border-t border-white/5">
-        <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-500">
+        <div className="max-w-7xl mx-auto px-5 flex flex-col md:flex-row justify-between items-center text-sm text-gray-400">
           <p>© {new Date().getFullYear()} Fat Pig BBQ. All rights reserved.</p>
           <p className="mt-2 md:mt-0">Made with 🔥 in Edmonds</p>
         </div>
