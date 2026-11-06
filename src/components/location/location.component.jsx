@@ -1,5 +1,11 @@
 import React from "react";
 
+const MAPS_KEY = process.env.REACT_APP_GOOGLE_MAPS;
+// Without an API key the v1 embed returns 403; fall back to the keyless embed so the map still renders.
+const mapSrc = MAPS_KEY
+  ? `https://www.google.com/maps/embed/v1/place?key=${MAPS_KEY}&q=fat+pig+bbq,Edmonds+WA`
+  : "https://maps.google.com/maps?q=Fat+Pig+BBQ,+7533+Olympic+View+Dr,+Edmonds,+WA+98026&output=embed";
+
 export default function Location() {
   return (
     <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8">
@@ -14,7 +20,7 @@ export default function Location() {
             loading="lazy"
             allowFullScreen
             referrerPolicy="no-referrer-when-downgrade"
-            src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS}&q=fat+pig+bbq, Edmonds+WA`}
+            src={mapSrc}
           ></iframe>
         </div>
 
