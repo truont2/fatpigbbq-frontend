@@ -27,7 +27,7 @@ function Navbar() {
   return (
     <Disclosure as="nav" className={`fixed w-full z-50 transition-all duration-300 ${scrolled ? "bg-black/80 backdrop-blur-md shadow-lg py-2" : "bg-transparent py-4"
       }`}>
-      {({ open }) => (
+      {({ open, close }) => (
         <>
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex justify-between items-center h-16">
@@ -50,7 +50,8 @@ function Navbar() {
                   <Link
                     key={link.name}
                     to={link.path}
-                    className={`font-serif font-bold text-lg tracking-widest uppercase hover:text-brand-red transition-all duration-300 ${location.pathname === link.path ? "text-brand-red" : "text-white"
+                    aria-current={location.pathname === link.path ? "page" : undefined}
+                    className={`font-serif font-bold text-lg tracking-widest uppercase text-white border-b-2 pb-0.5 transition-colors duration-300 ${location.pathname === link.path ? "border-brand-red" : "border-transparent hover:border-white/60"
                       }`}
                   >
                     {link.name}
@@ -59,10 +60,10 @@ function Navbar() {
 
                 {/* Social Icons */}
                 <div className="flex items-center space-x-4 border-l border-gray-600 pl-6">
-                  <a href="https://www.facebook.com/myfatpigbbq" target="_blank" rel="noreferrer" className="text-white hover:text-blue-500 transition-colors">
+                  <a href="https://www.facebook.com/myfatpigbbq" target="_blank" rel="noreferrer" aria-label="Fat Pig BBQ on Facebook" className="text-white hover:text-white/70 transition-colors">
                     <svg fill="currentColor" className="w-5 h-5" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
                   </a>
-                  <a href="https://www.instagram.com/fatpigbbq/" target="_blank" rel="noreferrer" className="text-white hover:text-pink-500 transition-colors">
+                  <a href="https://www.instagram.com/fatpigbbq/" target="_blank" rel="noreferrer" aria-label="Fat Pig BBQ on Instagram" className="text-white hover:text-white/70 transition-colors">
                     <svg fill="none" stroke="currentColor" strokeWidth="2" className="w-5 h-5" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path></svg>
                   </a>
                 </div>
@@ -102,17 +103,19 @@ function Navbar() {
                     <Link
                       key={link.name}
                       to={link.path}
-                      className="block px-3 py-4 rounded-md text-base font-medium text-white hover:bg-gray-800 hover:text-brand-red transition-all"
+                      onClick={() => close()}
+                      aria-current={location.pathname === link.path ? "page" : undefined}
+                      className={`block px-3 py-4 rounded-md text-base font-medium text-white hover:bg-white/10 transition-colors ${location.pathname === link.path ? "bg-white/10" : ""}`}
                     >
                       {link.name}
                     </Link>
                   ))}
 
                   <div className="mt-4 flex justify-center space-x-6">
-                    <a href="https://www.facebook.com/myfatpigbbq" className="text-gray-400 hover:text-blue-500">
+                    <a href="https://www.facebook.com/myfatpigbbq" target="_blank" rel="noreferrer" aria-label="Fat Pig BBQ on Facebook" className="p-2 text-gray-300 hover:text-white">
                       <svg fill="currentColor" className="w-6 h-6" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z" /></svg>
                     </a>
-                    <a href="https://www.instagram.com/fatpigbbq/" className="text-gray-400 hover:text-pink-500">
+                    <a href="https://www.instagram.com/fatpigbbq/" target="_blank" rel="noreferrer" aria-label="Fat Pig BBQ on Instagram" className="p-2 text-gray-300 hover:text-white">
                       <svg fill="none" stroke="currentColor" strokeWidth="2" className="w-6 h-6" viewBox="0 0 24 24"><rect width="20" height="20" x="2" y="2" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37zm1.5-4.87h.01"></path></svg>
                     </a>
                   </div>
