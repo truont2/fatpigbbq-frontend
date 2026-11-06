@@ -39,13 +39,13 @@ function Navbar() {
                   src={logo}
                   alt="Fat Pig BBQ"
                 />
-                <span className={`ml-3 text-xl font-serif font-bold tracking-widest uppercase text-white transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-90'}`}>
+                <span className={`ml-3 whitespace-nowrap text-xl font-serif font-bold tracking-widest uppercase text-white transition-opacity duration-300 ${scrolled ? 'opacity-100' : 'opacity-90'}`}>
                   Fat Pig BBQ
                 </span>
               </Link>
 
               {/* Desktop Menu */}
-              <div className="hidden md:flex items-center space-x-8">
+              <div className="hidden lg:flex items-center space-x-8">
                 {navLinks.map((link) => (
                   <Link
                     key={link.name}
@@ -70,7 +70,7 @@ function Navbar() {
               </div>
 
               {/* Mobile Menu Button */}
-              <div className="flex md:hidden">
+              <div className="flex lg:hidden">
                 <Disclosure.Button className="inline-flex items-center justify-center p-2 rounded-md text-gray-200 hover:text-white hover:bg-gray-700/50 focus:outline-none">
                   <span className="sr-only">Open main menu</span>
                   {open ? (
@@ -96,7 +96,7 @@ function Navbar() {
                 initial={{ opacity: 0, height: 0 }}
                 animate={{ opacity: 1, height: "auto" }}
                 exit={{ opacity: 0, height: 0 }}
-                className="md:hidden bg-brand-dark/95 backdrop-blur-xl overflow-hidden"
+                className="lg:hidden bg-brand-dark/95 backdrop-blur-xl overflow-hidden"
               >
                 <div className="px-4 pt-2 pb-6 space-y-1">
                   {navLinks.map((link) => (
