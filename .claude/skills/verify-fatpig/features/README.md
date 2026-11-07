@@ -5,12 +5,12 @@ This directory is the maintained source for verifying the user-facing behavior o
 ## Baseline preconditions
 
 - `$V launch` printed `READY`, and `$V doctor` prints `DOCTOR OK` for this run's port (default 3100).
-- Desktop baseline: `$V b viewport 1440x900`. Mobile baseline: `$V b device "iPhone 14"` (undo with `$V b device off`).
+- Viewports used by the journeys: desktop 1440x900, tablet 800x1024, mobile iPhone 13 (Playwright `devices`).
 - Never drive port 3000 or any instance that this run did not launch.
 
 ## Driving conventions
 
-- Start each recipe with `$V b goto "$($V url <route>)"` followed by a `wait` on a stable selector.
+- Each feature file's recipe is executable: `node .claude/skills/verify-fatpig/journeys.mjs "$($V url)" "$($V out)/journeys" <feature>`. Keep the file's steps and the journey in sync.
 - Prefer route paths, element ids, form `name` attributes, and visible link text over DOM position.
 - Click the way a user would: a nav link, a tab, a button. Never call router or scroll APIs directly.
 - Scroll motion sections into view before asserting on them.
@@ -18,8 +18,8 @@ This directory is the maintained source for verifying the user-facing behavior o
 
 ## Proof and skip reporting
 
-- Capture before and after screenshots (`$V shot`) and a JSON DOM probe tee'd into `$($V out)`.
-- Include `$V b console --errors`. The two React Router future-flag warnings are the known baseline.
+- Each journey writes screenshots and `results.json` into the output dir under `$($V out)`.
+- Each journey ends with a `no-errors` step: no page errors and no 4xx/5xx responses.
 - Record the feature ID and entry point with every artifact name, for example `menu-tab-sides-after.png`.
 - Report an unreachable path with the attempted command and the unmet precondition. Do not report a skipped entry point as verified through another one.
 
@@ -34,3 +34,4 @@ Each feature file has an H1, one paragraph of user-visible behavior, then exactl
 - [Home page](./home.md): hero CTA, favorites carousel, reviews, delivery links, visit-us info.
 - [Contact](./contact.md): contact details, form fields and validation (no submit).
 - [Catering](./catering.md): catering info page and the home teaser that links to it.
+- [About](./about.md): the story page and photo grid.

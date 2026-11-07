@@ -1,13 +1,13 @@
 ---
 name: verify-fatpig
-description: Launch and drive the Fat Pig BBQ marketing site (Create React App web UI) in an isolated dev server plus gstack headless browser, and capture screenshot/DOM evidence. Use when you need to prove a UI change works in the real app: nav, home sections, menu, catering, contact form, routing.
+description: Launch the Fat Pig BBQ marketing site (Create React App web UI) on an isolated dev server and drive it with Playwright to prove a change works in the real app. Runs the feature-map journeys (nav, menu, home, contact, catering, about), a full visual audit across desktop/tablet/mobile, and before/after repros, capturing screenshots, video, and JSON results.
 ---
 
 # verify-fatpig
 
-The app is a single-page React site (CRA, `react-scripts start`, React Router v6, Tailwind v3). The only user surface is the browser. There is no backend in this repo. The contact form posts to formsubmit.co, delivery links go to third-party sites, and the map is a Google Maps iframe that needs `REACT_APP_GOOGLE_MAPS`.
+The app is a single-page React site (CRA, `react-scripts start`, React Router v6, Tailwind v3). The only user surface is the browser. There is no backend in this repo. The contact form posts to formsubmit.co, delivery and press links go to third-party sites, and the map is a Google Maps embed (keyless fallback when `REACT_APP_GOOGLE_MAPS` is unset).
 
-Everything runs through `.claude/skills/verify-fatpig/verify.sh`, from the repo root. Set `V=.claude/skills/verify-fatpig/verify.sh`.
+`verify.sh` manages the instance. Playwright (`@playwright/test`, a devDependency) is the only driver. Run everything from the repo root with `V=.claude/skills/verify-fatpig/verify.sh`.
 
 ## Launch
 
@@ -16,11 +16,11 @@ V=.claude/skills/verify-fatpig/verify.sh
 $V launch                  # default port 3100; FATPIG_PORT=3123 $V launch for a second instance
 ```
 
-- Needs `node_modules` (run `npm install` once) and gstack's browse binary at `~/.claude/skills/gstack/browse/dist/browse` (override with `BROWSE_BIN`).
+- Needs `node_modules` and Playwright's Chromium: `npm install && npx playwright install chromium` once.
 - It refuses a port that is already taken. **Never drive port 3000.** That is the human's own `npm start`.
-- Ready means: webpack printed `compiled`, `/` returns 200, **and** the headless browser rendered the `<nav>` containing `FAT PIG BBQ`. On success it prints `READY http://localhost:<port>  run_dir=<dir>`. A cold start takes about 15-40s.
+- Ready means webpack printed `compiled`, `/` returns 200, **and** headless Chromium rendered the `<nav>` containing `FAT PIG BBQ`. On success it prints `READY http://localhost:<port>  run_dir=<dir>`. A cold start takes about 15-40s.
 - No seed data or migrations. All content is static in `src/`.
-- Each instance gets its own browser tab (`BROWSE_SESSION=fatpig-verify-<port>`), so parallel runs on different ports don't collide. The browse daemon itself is shared, so don't call `browse stop`/`restart`.
+- Each script opens its own browser, so instances on different ports never share browser state.
 
 ## Doctor
 
@@ -28,39 +28,31 @@ $V launch                  # default port 3100; FATPIG_PORT=3123 $V launch for a
 $V doctor     # read-only; exits 1 on any failure
 ```
 
-It checks four things: the process group is alive, the port's listener belongs to *our* process group, the compile succeeded, and the nav renders. It also prints the branch, commit, and `+dirty` state, so you know which code you are looking at. Run it first whenever anything looks off.
+It checks four things: the process group is alive, the port's listener belongs to *our* process group, the compile succeeded, and the nav renders in Chromium. It also prints the branch, commit, and `+dirty` state. Run it before the first drive, and again after any failed drive.
 
 ## Drive
 
-`$V b <browse command>` runs gstack browse in this instance's tab. `$V url /path` prints the absolute URL. Useful commands: `goto`, `wait <sel>`, `click <sel>`, `fill <sel> <val>`, `js <expr>`, `text`, `snapshot -i` (ARIA tree with `@eN` refs you can click), `viewport 1440x900`, `device "iPhone 14"`, `console --errors`.
-
 ```bash
-$V b viewport 1440x900
-$V b goto "$($V url /menu)"
-$V b wait "#meals"
-$V b js "[...document.querySelectorAll('a')].find(a=>a.innerText.trim()==='Sides').click()"
+node .claude/skills/verify-fatpig/journeys.mjs "$($V url)" "$($V out)/journeys"            # every feature
+node .claude/skills/verify-fatpig/journeys.mjs "$($V url)" "$($V out)/journeys" menu home  # a subset
+node .claude/skills/verify-fatpig/visual-audit.mjs "$($V url)" "$($V out)/visual-audit"
 ```
 
-Stable handles in this app:
-- Routes: `/`, `/about-page`, `/menu`, `/catering`, `/contact`. Any other path renders the "Page under construction" page.
-- Nav: `nav a` by visible text. Nav text is CSS-uppercased, so `innerText` returns `HOME`, `MENU`, and so on. The mobile menu button has the accessible name `Open main menu`.
-- Menu sections: `#meals`, `#sides`, `#beverages`. Item names are `h3` elements inside each section.
-- Contact form: `input[name=name]`, `input[name=email]`, `textarea[name=message]`, `button[type=submit]`.
-- Selector click via `$V b click` takes CSS. For text matching, use `js` with `innerText` as shown above, or `snapshot -i` and then `click @eN`.
+- `journeys.mjs` runs one journey per `features/*.md` file. Step ids match each file's Sub-features. It prints `PASS`/`FAIL <feature>/<id> <detail>` and `TIME <feature>`, writes `results.json` and screenshots, and exits 1 on any FAIL. A full run takes about 40s.
+- `visual-audit.mjs` sweeps every route at desktop, tablet, and mobile, clicks every in-app control, records video, and screenshots each step. It flags text that is covered, clipped, off-screen, hidden, or below WCAG AA contrast, and menu-tab jumps that leave a heading under the sticky bar. Known non-bugs live in its `KNOWN` list, each with a reason. They are reported as `allowed` and don't fail the run. Output is `issues.json` plus `steps/` and `video/`.
+- `$V url /path` prints an absolute URL. `$V out` prints this run's evidence dir.
 
-Framer Motion sections (home Catering block, About, Catering page) start at `opacity:0` until scrolled into view. Scroll the element into view (`$V b scroll <sel>`) before you screenshot or assert visibility.
+Stable handles in this app:
+- Routes: `/`, `/about-page`, `/menu`, `/catering`, `/contact`. Any other path renders "Page under construction".
+- Nav: `nav a` by visible text, CSS-uppercased (`innerText` is `MENU`). The current link has `aria-current="page"`. Below 1024px the links sit behind the button named `Open main menu`.
+- Menu: sections `#meals`, `#sides`, `#beverages` with item `h3`s. Tabs are `.sticky a[href="#id"]`, and the active one has `aria-current="true"`.
+- Contact form: `input[name=name]`, `input[name=email]`, `textarea[name=message]`.
 
 ## Evidence
 
-```bash
-$V shot <name> [--viewport]       # PNG into the run dir (full page by default)
-$V b js "JSON.stringify({...})" | tee "$($V out)/<name>.json"
-```
-
-- Evidence lives in `$($V out)`, which is `/tmp/fatpig-verify/runs/<run-id>/` (`/private/tmp/...` on macOS). Cleanup never deletes it, and it copies `server.log` there on teardown.
-- Proof standard: drive the real user path (click the link or tab a user would click, not `history.pushState` or a scroll call). Capture state **before and after** the action, plus a JSON probe of the resulting DOM or scroll state, and `console --errors` for new errors. The two React Router "Future Flag" warnings are a known baseline.
-- External side effects: **do not submit the contact form**. It sends a real email to the restaurant through formsubmit.co. Verify the form up to submit: fields, `required` validation (`$V b js "document.querySelector('form').checkValidity()"`), and the `action` URL. Delivery and social links are verified by `href` and `target`, not by visiting them.
-- Full-page screenshots don't scroll, so motion sections can show up as blank bands. That is a capture artifact, not proof of a bug. Scroll first, then check.
+- Evidence lives in `$($V out)`, which is `/tmp/fatpig-verify/runs/<run-id>/` (`/private/tmp/...` on macOS). Cleanup never deletes it, and it copies `server.log` there on teardown. Show the user the screenshots that prove a claim; don't just cite counts.
+- Proof standard: drive the real user path (click the link or tab a user would click, never call router or scroll APIs to fake it). Assert the resulting state, and assert no page errors or 4xx/5xx responses (each journey's `no-errors` step).
+- External side effects: **never submit the contact form**. It emails the real restaurant. Verify up to submit (validity, action, method). Delivery, press, and social links are verified by `href` and `target`, not by visiting them.
 
 ## Cleanup
 
@@ -70,15 +62,47 @@ $V cleanup
 
 Cleanup kills only the process group that `launch` recorded (never by process name), removes `/tmp/fatpig-verify/state/<port>`, keeps the run's evidence directory, and reports whether the port is free. Run it after every attempt, including failed ones.
 
-## Playwright
+## Before-state repro
 
-`@playwright/test` is a devDependency (Chromium via `npx playwright install chromium`). Use it for scripted multi-step flows, device emulation (`devices['iPhone 13']`), `reducedMotion`, and network/response checks. Resolve it from the repo with `createRequire(<repo>/package.json)` when a script lives outside the repo. Point it at `$($V url)`, the instance `launch` started, and write screenshots under `$($V out)`.
+To prove a fix, show the old code failing on the same check:
 
-- `node .claude/skills/verify-fatpig/smoke.mjs "$($V url)" "$($V out)/smoke"` is a regression smoke for previously fixed bugs (sticky menu tabs, scroll reset, mobile menu close, active nav, back-to-top, 404 on mobile, catering tel link, footer links/logo, no 4xx responses). It prints PASS/FAIL per check and exits 1 on any failure.
+```bash
+WT=/tmp/fatpig-before
+git worktree add --detach "$WT" <old-commit>
+cp -cR node_modules "$WT/node_modules"                     # APFS clone; never symlink, the main node_modules follows the current branch
+(cd "$WT" && npm install --no-save <dep-removed-since>)     # only if the fix removed a dependency
+(cd "$WT" && FATPIG_PORT=3200 .claude/skills/verify-fatpig/verify.sh launch)
+node .claude/skills/verify-fatpig/journeys.mjs http://localhost:3200 "$WT-journeys" <feature>   # expect FAILs
+(cd "$WT" && FATPIG_PORT=3200 .claude/skills/verify-fatpig/verify.sh cleanup)
+rm -rf "$WT" && git worktree prune                          # `git worktree remove --force` fails on the cloned node_modules
+```
 
-- `node .claude/skills/verify-fatpig/visual-audit.mjs "$($V url)" "$($V out)/visual-audit"` sweeps every route at desktop, tablet, and mobile, clicks every in-app control, records video, and screenshots each step. It flags text that is covered, clipped, off-screen, hidden, or below WCAG AA contrast, and menu-tab jumps that leave the heading under the sticky bar. The report is `issues.json` next to `steps/` and `video/`. Known non-bugs: review-carousel lines caught mid-fade (`hidden-text`), hover colors left behind by the previous tap (`low-contrast` on a link), and mobile `back-to-top` (`control-missing`, because the button is hidden below 768px by design).
+Run the current branch's `journeys.mjs` against the old instance, as shown, so the old code meets the new check.
+
+## Adding a check
+
+New probes go into the skill, never into one-off scratchpad scripts:
+- A behavior a user can see belongs to a feature. Add a step to that feature's journey in `journeys.mjs` as `ok(F, '<sub-feature-id>', pass, detail)`, and list the id under the matching `features/*.md` Sub-features and Driving section.
+- A new page or flow gets a new `features/<name>.md` (entry contract in `features/README.md`) and a matching `JOURNEYS.<name>`.
+- A sweep-wide detector goes into `visual-audit.mjs`. A known non-bug goes into its `KNOWN` list with a one-line reason.
+- Checks take the base URL and output dir as arguments from `$($V url)` and `$($V out)`, with no absolute paths or hardcoded ports.
+- Run a new check once against the old code (see Before-state repro) to show it fails, then against the fix.
+
+## Playwright tips
+
+- Scroll with `window.scrollTo({ top, behavior: 'instant' })`. The global `scroll-behavior: smooth` otherwise animates the jump, and an immediate read-back returns a mid-scroll value.
+- After a `click`, the pointer stays over the element and its hover style changes computed colors. Call `page.mouse.move(5, 600)` before reading `getComputedStyle` (`settle()` in `journeys.mjs` does this).
+- Hidden-at-this-breakpoint elements are still in the DOM. Filter by `offsetParent` or `isVisible()` before counting.
+- Motion sections (home catering teaser, About story and grid) start at `opacity: 0` until scrolled into view. Scroll first. Full-page screenshots that don't scroll show them blank.
+
+## Gotchas
+
+- The project uses Tailwind v3. v4 syntax such as `text-brand-red!` produces no CSS and fails silently. Confirm a class took effect with `getComputedStyle`, not by reading the source.
+- `overflow: hidden` on any ancestor disables `position: sticky` for its descendants. `.App` uses `overflow-x: clip`, which clips horizontally without breaking sticky. Keep it that way.
 
 ## Helpers
 
-- `verify.sh`: `launch | doctor | b <browse args> | shot <name> [flags] | url [path] | out | cleanup`. Env: `FATPIG_PORT` (default 3100), `BROWSE_BIN`, `FATPIG_VERIFY_ROOT`.
+- `verify.sh`: `launch | doctor | url [path] | out | cleanup`. Env: `FATPIG_PORT` (default 3100), `FATPIG_VERIFY_ROOT`.
+- `journeys.mjs`: `<baseUrl> <outDir> [feature ...]`, the executable feature map.
+- `visual-audit.mjs`: `<baseUrl> <outDir>`, the full-site sweep.
 - Feature recipes: [features/README.md](features/README.md).
