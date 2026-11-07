@@ -1,37 +1,39 @@
 # Home page
 
-The landing page introduces the restaurant with a photo hero and menu CTA, then story sections, a catering teaser, delivery-partner links, a scrollable favorites strip, rotating customer reviews, press articles, and a Visit Us block with address, hours, and map.
+The landing page has a photo hero with a menu button, story and promise blocks, a catering teaser, delivery-partner cards, a scrollable favorites strip, a rotating reviews carousel, press cards, and a Visit Us block with address, hours, and a map.
 
 ## Sub-features
 
-- `home-hero` hero photo, brand h1, and "View Our Menu" button that routes to `/menu`.
-- `home-favorites` horizontal favorites strip with left/right arrow buttons (desktop).
-- `home-reviews` review carousel auto-advances every 6s. The dots jump to a review.
-- `home-delivery` GrubHub / Uber Eats / DoorDash cards link out in a new tab.
-- `home-press` three press cards link to external articles.
-- `home-visit` address, hours (Sunday closed), Google Maps iframe.
+- `home-hero` the "View Our Menu" button routes to `/menu`.
+- `home-favorites` the `→` arrow scrolls the favorites strip (arrows show on 768px and wider; on mobile you swipe).
+- `home-reviews` four dot buttons. Each jumps to a review, and the carousel otherwise auto-advances every 6s.
+- `home-delivery` three "Order Now" cards (GrubHub via `fatpigbbq.dine.online`, Uber Eats, DoorDash) open in new tabs.
+- `home-press` three "Read Full Story" press cards open in new tabs.
+- `home-visit` the map iframe sits flush against the address and hours panel, which lists Mon-Thurs, Fri-Sat, and Sunday closed.
 
 ## How to get to it (user POV)
 
 - Open `/`, or click the logo or `HOME` in the nav.
 
-## Driving it with verify.sh
+## Driving it with journeys.mjs
 
 Preconditions:
 
-- Instance is healthy, with the desktop viewport `1440x900`.
+- `$V doctor` prints `DOCTOR OK`.
 
-- **Hero CTA.** Run `$V b goto "$($V url /)"` and `$V b wait h1`, then `$V shot home-hero-before --viewport`. Click with `$V b js "[...document.querySelectorAll('button')].find(b=>/View Our Menu/i.test(b.innerText)).click()"`, then `$V b wait "#meals"`. The URL ends in `/menu`.
-- **Favorites arrows.** Back on `/`, run `$V b scroll "h2"` until "Customer Favorites" is in view (or `$V b js "[...document.querySelectorAll('h2')].find(h=>h.innerText.includes('Customer Favorites')).scrollIntoView()"`). Read the strip's `scrollLeft` (`document.querySelector('.snap-x').scrollLeft`), click the `→` button, wait 1s, and read it again. It should increase by about 300.
-- **Reviews dots.** Click the 3rd dot under "What Our Customers Say" (`[...document.querySelectorAll('button')].filter(b=>b.className.includes('rounded-full w-'))[2]`, or via `snapshot -i`). The blockquote text changes to the `Mark H.` review.
-- **Delivery links.** Run `$V b js "JSON.stringify([...document.querySelectorAll('a[target=_blank]')].filter(a=>/grubhub|ubereats|doordash|dine.online/.test(a.href)).map(a=>[a.innerText.trim().split('\\n')[0],a.href]))"`. Three cards are listed. Do not visit them.
-- **Visit Us.** Run `$V b text`. It contains `7533 Olympic View Dr`, `Mon - Thurs`, and `Closed`.
-- **Proof.** Take viewport screenshots after each step and run `$V b console --errors`.
+Run `node .claude/skills/verify-fatpig/journeys.mjs "$($V url)" "$($V out)/journeys" home`. Steps at desktop 1440x900:
+
+- **Hero.** Wait for the h1 plus about 1s for the fade-in, then click the `View Our Menu` button. `#meals` appears at `/menu`.
+- **Favorites.** Scroll `.snap-x` into view, click the `→` button. `scrollLeft` increases (about 320, snapping to cards).
+- **Reviews.** Click the 3rd `button.w-3.h-3.rounded-full`. Within about 1s the blockquote contains "barbecue was excellent". There are 4 dots.
+- **Delivery and press.** Count `a[target=_blank]` whose text includes "Order Now" (3, with the hosts above) and "Read Full Story" (3). Don't visit them.
+- **Visit Us.** Scroll the map iframe into view. Its `src` is the keyless `maps.google.com/maps?q=Fat+Pig…` embed (or the `google.com/maps/embed/v1/place` API when `REACT_APP_GOOGLE_MAPS` is set). The gap between map and panel is `0`, and the panel lists the address, `Mon - Thurs`, and `Closed`.
+- **Proof.** `home-hero.png`, `home-favorites.png`, `home-reviews.png`, `home-visit.png`, and `results.json`.
 
 ## Gotchas
 
-- The hero image fades in only after a 5.7 MB JPEG loads, so screenshots taken immediately can show a black hero. `wait h1`, then allow about 1s.
-- The home Catering teaser starts at `opacity:0` (framer-motion `whileInView`). It is blank in full-page shots until scrolled.
-- The reviews auto-advance every 6s, so assertions on the text race the timer. Click a dot first, then read within 6s.
-- Without `REACT_APP_GOOGLE_MAPS`, the map falls back to the keyless `maps.google.com/...&output=embed`. With the key it uses the v1 embed API, which is only verifiable where the key is set.
-- GrubHub links differ: the home card goes to `fatpigbbq.dine.online`, while the footer goes to `grubhub.com`.
+- The hero fades in only after its 5.7 MB photo loads. Screenshots taken right away show a dark hero.
+- The catering teaser animates in on scroll (starts at `opacity: 0`), so full-page screenshots show it blank. Scroll first.
+- Dot clicks don't reset the 6s timer, so the next auto-advance can come sooner. Read the quote right after clicking.
+- Footer links also go to Uber Eats, DoorDash, and GrubHub (`grubhub.com`, unlike the card's `dine.online`). Scope delivery checks to "Order Now" cards.
+- The map iframe is `loading="lazy"`. Scroll to it before reading its frame.

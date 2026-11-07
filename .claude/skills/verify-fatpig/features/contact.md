@@ -1,33 +1,36 @@
 # Contact
 
-A visitor finds the address, phone, and email, and can fill in a message form addressed to the restaurant.
+A visitor finds the address, a tappable phone number, and an email link, and can fill in a message form that posts to formsubmit.co.
 
 ## Sub-features
 
-- `contact-details` address, `(425) 361-7640`, and a `mailto:fatpigbbq@yahoo.com` link.
-- `contact-form-fields` Name, Email, and Message fields with visible labels, all `required`.
-- `contact-form-validation` the browser blocks an empty or invalid email.
-- `contact-form-submit` POST to formsubmit.co. **Never exercised by verification** (it emails the real business).
+- `contact-details` the address, a `tel:4253617640` link showing (425) 361-7640, and `mailto:fatpigbbq@yahoo.com`.
+- `contact-form-empty-invalid` the empty form fails browser validation (all three fields are `required`).
+- `contact-form-validation` an invalid email fails with `typeMismatch`.
+- `contact-form-ready-unsent` a complete form validates, and its `action` is `https://formsubmit.co/…` with method `post`. **Never submitted**: submitting emails the real business.
 
 ## How to get to it (user POV)
 
-- Click `CONTACT` in the nav, or "Contact" in the footer.
+- Click `CONTACT` in the nav (inside the menu button below 1024px), or "Contact" in the footer.
 - Go directly to `/contact`.
 
-## Driving it with verify.sh
+## Driving it with journeys.mjs
 
 Preconditions:
 
-- Instance is healthy.
+- `$V doctor` prints `DOCTOR OK`.
 
-- **Details.** Run `$V b goto "$($V url /contact)"` and `$V b wait form`, then `$V b js "JSON.stringify({tel:document.body.innerText.includes('(425) 361-7640'), mail:document.querySelector('a[href^=mailto]').href})"`. The result is `tel:true`, and `mail` is `mailto:fatpigbbq@yahoo.com`.
-- **Empty invalid.** Run `$V b js "document.querySelector('form').checkValidity()"`. It returns `false`.
-- **Bad email.** Run `$V b fill "input[name=name]" "Linh Tran"`, `$V b fill "input[name=email]" "not-an-email"`, and `$V b fill "textarea[name=message]" "Catering for 30 on Saturday?"`. `checkValidity()` is still `false`, and `document.querySelector('input[name=email]').validity.typeMismatch` is `true`.
-- **Valid, unsent.** Run `$V b fill "input[name=email]" "linh@example.org"`. `checkValidity()` is `true`. Read `document.querySelector('form').action` and expect a `https://formsubmit.co/...` URL with method `post`. Stop here.
-- **Proof.** Run `$V shot contact-form-filled --viewport` and save the probes as JSON.
+Run `node .claude/skills/verify-fatpig/journeys.mjs "$($V url)" "$($V out)/journeys" contact`. Steps at desktop 1440x900, all on one page in order:
+
+- **Details.** The `tel:` and `mailto:` hrefs match the values above.
+- **Empty.** `form.checkValidity()` is `false`.
+- **Bad email.** Fill name `Linh Tran`, email `not-an-email`, message `Catering for 30 on Saturday?`. `checkValidity()` is `false` and the email's `validity.typeMismatch` is `true`.
+- **Ready, unsent.** Change the email to `linh@example.org`. `checkValidity()` is `true`, the action and method match, and the pathname is still `/contact`. Stop here.
+- **Proof.** `contact-form-filled.png` and `results.json`.
 
 ## Gotchas
 
-- Do not click `Send Message` or call `form.submit()`. It sends a real email and redirects to formsubmit's captcha page.
-- The placeholders (`John Doe`, `john@example.com`) are not values. Assert on `.value`, not on visible text.
-- Labels are uppercase via CSS (`NAME`, `EMAIL`, `MESSAGE`).
+- Never click `Send Message` or call `form.submit()` / `requestSubmit()`. The form is a native POST with no JS handler.
+- The "Ready" step depends on the name and message from the "Bad email" step. Run the steps in order.
+- The placeholders (`John Doe`, `john@example.com`) are not values. Assert on `.value` and validity, not on visible text.
+- The form has no hidden formsubmit fields (`_next`, `_captcha`), so after a real submit the visitor lands on formsubmit's page, not back on the site.

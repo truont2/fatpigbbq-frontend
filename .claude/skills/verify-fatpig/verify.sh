@@ -1,31 +1,38 @@
 #!/usr/bin/env bash
-# Verification harness for the Fat Pig BBQ web app (CRA dev server + gstack headless browser).
-# Usage: verify.sh launch | doctor | b <browse args...> | shot <name> [browse screenshot flags] | url [path] | out | cleanup
+# Verification harness for the Fat Pig BBQ web app (CRA dev server + Playwright Chromium).
+# Usage: verify.sh launch | doctor | url [path] | out | cleanup
 set -euo pipefail
 
 REPO="$(cd "$(dirname "$0")/../../.." && pwd)"
 PORT="${FATPIG_PORT:-3100}"
-B="${BROWSE_BIN:-$HOME/.claude/skills/gstack/browse/dist/browse}"
-TMP_REAL="$(cd /tmp && pwd -P)"                 # /private/tmp on macOS; browse only writes under real tmp paths
+TMP_REAL="$(cd /tmp && pwd -P)"
 ROOT="${FATPIG_VERIFY_ROOT:-$TMP_REAL/fatpig-verify}"
 STATE="$ROOT/state/$PORT"                      # per-port instance state (removed by cleanup)
 RUNS="$ROOT/runs"                              # evidence (never removed by cleanup)
-export BROWSE_SESSION="fatpig-verify-$PORT"    # own browser tab, isolated from other agents
 
 die() { echo "ERROR: $*" >&2; exit 1; }
 base_url() { echo "http://localhost:$PORT"; }
 run_dir() { [ -f "$STATE/run_id" ] || die "no instance on port $PORT; run launch first"; echo "$RUNS/$(cat "$STATE/run_id")"; }
 listener_pid() { lsof -nP -tiTCP:"$PORT" -sTCP:LISTEN 2>/dev/null | head -1 || true; }
 
+# Ready means a real browser rendered the nav with the brand, not just that the port answers.
 rendered_ok() {
-  "$B" goto "$(base_url)/" >/dev/null 2>&1 || return 1
-  "$B" wait nav >/dev/null 2>&1 || return 1
-  [ "$("$B" js "document.querySelector('nav') && document.querySelector('nav').innerText.includes('FAT PIG BBQ') ? 'yes' : 'no'" 2>/dev/null | tail -1)" = "yes" ]
+  (cd "$REPO" && BASE="$(base_url)" node --input-type=module -e "
+    import { createRequire } from 'module';
+    const { chromium } = createRequire(process.cwd() + '/package.json')('@playwright/test');
+    const b = await chromium.launch();
+    try {
+      const p = await b.newPage();
+      await p.goto(process.env.BASE + '/', { waitUntil: 'domcontentloaded', timeout: 15000 });
+      const t = await p.locator('nav').first().innerText({ timeout: 10000 });
+      process.exit(/FAT PIG BBQ/i.test(t) ? 0 : 1);
+    } finally { await b.close(); }
+  " >/dev/null 2>&1)
 }
 
 cmd_launch() {
-  [ -x "$B" ] || die "browse binary missing at $B (install gstack, or set BROWSE_BIN)"
   [ -d "$REPO/node_modules" ] || die "node_modules missing; run: (cd $REPO && npm install)"
+  (cd "$REPO" && node -e "require.resolve('@playwright/test')" 2>/dev/null) || die "@playwright/test missing; run: (cd $REPO && npm install && npx playwright install chromium)"
   [ -z "$(listener_pid)" ] || die "port $PORT already in use (pid $(listener_pid)); pick another: FATPIG_PORT=31xx"
   [ ! -f "$STATE/pgid" ] || die "stale state for port $PORT; run cleanup first"
   mkdir -p "$STATE" "$RUNS"
@@ -64,13 +71,6 @@ cmd_doctor() {
   [ "$ok" = 1 ] && echo "DOCTOR OK" || { echo "DOCTOR FAIL"; exit 1; }
 }
 
-cmd_shot() {
-  [ $# -ge 1 ] || die "usage: shot <name> [--viewport|selector]"
-  local name="$1"; shift
-  local dir; dir="$(run_dir)"
-  "$B" screenshot "$@" "$dir/$name.png"
-}
-
 cmd_cleanup() {
   if [ -f "$STATE/pgid" ]; then
     local pgid; pgid="$(cat "$STATE/pgid")"
@@ -91,10 +91,8 @@ cmd_cleanup() {
 case "${1:-}" in
   launch)  cmd_launch ;;
   doctor)  cmd_doctor ;;
-  b)       shift; exec "$B" "$@" ;;
-  shot)    shift; cmd_shot "$@" ;;
-  url)     echo "$(base_url)${2:-/}" ;;
+  url)     p="${2:-}"; [ -n "$p" ] && [ "${p#/}" = "$p" ] && p="/$p"; echo "$(base_url)$p" ;;
   out)     run_dir ;;
   cleanup) cmd_cleanup ;;
-  *) echo "usage: $0 launch|doctor|b <browse args>|shot <name> [flags]|url [path]|out|cleanup" >&2; exit 2 ;;
+  *) echo "usage: $0 launch|doctor|url [path]|out|cleanup" >&2; exit 2 ;;
 esac

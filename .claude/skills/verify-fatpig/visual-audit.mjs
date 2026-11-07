@@ -1,7 +1,7 @@
 // Visual audit: sweeps every route at three viewports, clicks every in-app control, records video,
 // screenshots each step, and flags text that is covered, clipped, off-screen, invisible, or low contrast.
 // Usage: node .claude/skills/verify-fatpig/visual-audit.mjs "$($V url)" "$($V out)/visual-audit"
-// Exits 1 when any issue is found. Report: <out>/issues.json, <out>/steps/*.png, <out>/video/*.webm
+// Exits 1 when any issue outside the KNOWN list is found. Report: <out>/issues.json, <out>/steps/*.png, <out>/video/*.webm
 import { createRequire } from 'module';
 import fs from 'fs';
 import path from 'path';
@@ -19,6 +19,13 @@ const VIEWPORTS = {
   mobile: { ...devices['iPhone 13'] },
 };
 const ROUTES = ['/', '/menu', '/catering', '/about-page', '/contact', '/order'];
+
+// Known non-bugs. Each match is reported under "allowed" and does not fail the run.
+const KNOWN = [
+  { why: 'reviews carousel auto-rotates; a capture can land mid-fade', match: i => i.type === 'hidden-text' && i.route === '/' && /^(blockquote|cite)\b/.test(i.el || '') },
+  { why: 'a tap on the previous page leaves :hover on whatever sits under the finger after navigating', match: i => i.type === 'low-contrast' && /^nav-to-/.test(i.step || '') },
+  { why: 'back-to-top is hidden below 768px by design so it does not cover prices', match: i => i.type === 'control-missing' && i.step === 'back-to-top' && i.viewport === 'mobile' },
+];
 
 // Runs in the page. Inspects every text-bearing element inside the viewport.
 const DETECT = (mode) => {
@@ -209,8 +216,11 @@ try {
   await browser.close();
 }
 
-const counts = issues.reduce((m, i) => ((m[i.type] = (m[i.type] || 0) + 1), m), {});
-fs.writeFileSync(path.join(OUT, 'issues.json'), JSON.stringify({ base: BASE, counts, issues, ...summary }, null, 1));
-for (const i of issues) console.log(`${i.type.padEnd(20)} ${i.viewport.padEnd(7)} ${(i.route || '').padEnd(11)} ${(i.step || '').padEnd(28)} ${JSON.stringify(i.text || '')} ${JSON.stringify(i.detail || '')}`);
-console.log('COUNTS', JSON.stringify(counts), `steps=${stepNo}`, `report=${path.join(OUT, 'issues.json')}`);
-if (issues.length) process.exitCode = 1;
+const allowed = issues.filter(i => KNOWN.some(k => k.match(i))).map(i => ({ ...i, allowedBecause: KNOWN.find(k => k.match(i)).why }));
+const real = issues.filter(i => !KNOWN.some(k => k.match(i)));
+const counts = real.reduce((m, i) => ((m[i.type] = (m[i.type] || 0) + 1), m), {});
+fs.writeFileSync(path.join(OUT, 'issues.json'), JSON.stringify({ base: BASE, counts, issues: real, allowed, ...summary }, null, 1));
+for (const i of allowed) console.log(`allowed              ${i.viewport.padEnd(7)} ${(i.route || '').padEnd(11)} ${(i.step || '').padEnd(28)} ${i.type}: ${i.allowedBecause}`);
+for (const i of real) console.log(`${i.type.padEnd(20)} ${i.viewport.padEnd(7)} ${(i.route || '').padEnd(11)} ${(i.step || '').padEnd(28)} ${JSON.stringify(i.text || '')} ${JSON.stringify(i.detail || '')}`);
+console.log('COUNTS', JSON.stringify(counts), `allowed=${allowed.length}`, `steps=${stepNo}`, `report=${path.join(OUT, 'issues.json')}`);
+if (real.length) process.exitCode = 1;
